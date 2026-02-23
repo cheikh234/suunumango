@@ -18,6 +18,17 @@
   .nlink { color:#1A4A2E;font-size:14px;font-weight:500;text-decoration:none;padding:5px 0;border-bottom:2px solid transparent;transition:all .2s;cursor:none; }
   .nlink:hover { border-bottom-color:#F5800A;color:#F5800A; }
 
+  /* Burger : caché desktop, visible mobile */
+  #mBtn { display:none; }
+  @media(max-width:1023px) {
+    #mBtn { display:flex!important; }
+    #navDesktop { display:none!important; }
+  }
+  @media(min-width:1024px) {
+    #mBtn { display:none!important; }
+    #navDesktop { display:flex!important; }
+  }
+
   .hero-bg { background:linear-gradient(135deg,#1A4A2E 0%,#0D2318 55%,#2D7A50 100%);position:relative;overflow:hidden; }
   .hero-bg::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 68% 50%,rgba(245,128,10,.28) 0%,transparent 55%),radial-gradient(ellipse at 18% 75%,rgba(212,168,67,.18) 0%,transparent 45%); }
   .hgrid { position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px; }
@@ -32,8 +43,7 @@
   .mtrack { display:flex;width:max-content;animation:marquee 22s linear infinite; }
   @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* Partner logos marquee */
-  .partner-track { display:flex;width:max-content;animation:marquee 28s linear infinite; }
+  @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   .vcard { background:white;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:transform .35s cubic-bezier(.175,.885,.32,1.275),box-shadow .35s;cursor:none; }
   .vcard:hover { transform:translateY(-10px) scale(1.015);box-shadow:0 24px 56px rgba(26,74,46,.18),0 0 0 2px rgba(245,128,10,.25); }
@@ -48,15 +58,16 @@
 
   .world-map-container { position:relative;width:100%;border-radius:20px;overflow:hidden;background:#1a1a1a; }
 
+  /* SERVICE CARDS — plus hautes */
   .svc-card { background:white;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none; }
   .svc-card:hover { transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,74,46,.15); }
-  .svc-img { width:100%;height:200px;object-fit:cover;display:block; }
-  .svc-logo { width:62px;height:62px;border-radius:50%;background:white;border:3px solid #F5800A;display:flex;align-items:center;justify-content:center;margin:-31px auto 0;position:relative;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.1); }
+  .svc-img { width:100%;height:220px;object-fit:cover;display:block; }
+  .svc-logo { width:62px;height:62px;border-radius:50%;background:white;border:3px solid #F5800A;display:flex;align-items:center;justify-content:center;margin:-31px auto 0;position:relative;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.1);overflow:hidden; }
 
+  /* Certifications */
   .cert { display:flex;align-items:center;gap:14px;padding:14px;background:white;border-radius:14px;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none; }
   .cert:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateX(4px); }
-  /* Image dans cert — même taille que les icônes */
-  .cert-img { width:42px;height:42px;border-radius:10px;object-fit:contain;flex-shrink:0;background:#f9fafb;padding:4px; }
+  .cert-img { width:42px;height:42px;border-radius:10px;object-fit:contain;flex-shrink:0;padding:5px; }
 
   .btn-p { background:linear-gradient(135deg,#F5800A,#C05C00);color:white;padding:13px 30px;border-radius:100px;font-family:Arial,sans-serif;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;position:relative;overflow:hidden;cursor:none;text-decoration:none; }
   .btn-p::after { content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FBBF24,#F5800A);opacity:0;transition:opacity .3s; }
@@ -79,22 +90,20 @@
     .grid3{grid-template-columns:1fr;gap:12px}
     .hero-stat-d{display:none!important}
     .hero-stat-m{display:flex!important}
-    /* Icônes réseaux sociaux centrés sur mobile */
-    .social-footer-wrap { justify-content:center!important; text-align:center!important; }
-    .social-footer-wrap p { text-align:center; }
-    .social-footer-wrap .social-icons-row { justify-content:center!important; }
+    /* Social centré mobile */
+    .social-footer-col { text-align:center!important; }
+    .social-footer-col p { text-align:center!important; }
+    .social-footer-col .social-row { justify-content:center!important; }
+    /* Carte mobile — zoom sur zone Sénégal/Europe */
+    .map-img-wrap { overflow:hidden;border-radius:20px; }
+    .map-img-wrap img { transform:scale(2.2);transform-origin:58% 38%;width:100%;height:auto;display:block; }
+    .map-img-wrap svg { transform:scale(2.2);transform-origin:58% 38%; }
   }
-  @media(max-width:900px) {
+  @media(max-width:900px){
     .cert-grid{grid-template-columns:1fr!important}
   }
-  /* Toggle burger uniquement sur mobile */
-  #mBtn { display:none; }
-  @media(max-width:1023px) {
-    #mBtn { display:flex; }
-    .nav-links-desktop { display:none!important; }
-  }
 
-  ::-webkit-scrollbar{width:5px} ::-webkit-scrollbar-track{background:#FEF6E4} ::-webkit-scrollbar-thumb{background:#F5800A;border-radius:3px}
+  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#FEF6E4}::-webkit-scrollbar-thumb{background:#F5800A;border-radius:3px}
 
   @keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
   .pulse{animation:pulse2 2s infinite}
@@ -106,33 +115,12 @@
   .ev-dot { display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s;cursor:none; }
   .ev-dot.on { background:white;width:20px;border-radius:4px; }
 
-  /* Partner logo pill */
-  .partner-logo { display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border-radius:12px;padding:10px 22px;height:56px;min-width:120px;border:1px solid rgba(255,255,255,.15); }
-  .partner-logo img { max-height:32px;max-width:100px;object-fit:contain;filter:brightness(0) invert(1);opacity:.75; }
-  .partner-logo span { color:white;font-size:13px;font-weight:700;opacity:.75;white-space:nowrap;letter-spacing:.5px; }
-
-  /* ── Partenaires scroll ── */
-  @keyframes partnerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-  /* ── Burger mobile seulement ── */
-  @media(max-width:1023px){
-    #mBtn{display:flex!important}
-    #navDesktop{display:none!important}
-  }
-  @media(min-width:1024px){
-    #mBtn{display:none!important}
-    #navDesktop{display:flex!important}
-  }
-
-  /* ── Social footer centré sur mobile ── */
-  @media(max-width:768px){
-    #socialCol{text-align:center!important}
-    #socialIcons{justify-content:center!important}
-    #socialCol p{text-align:center!important}
-    .social-footer-wrap{text-align:center!important}
-    .social-footer-wrap p{text-align:center!important}
-    #socialIcons{justify-content:center!important}
-  }
+  /* Contact cards — email ne déborde plus */
+  .contact-card { display:flex;align-items:center;gap:14px;text-decoration:none;padding:18px;border-radius:16px;background:white;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none;min-width:0; }
+  .contact-card:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateY(-3px); }
+  .contact-card .icon-box { width:44px;height:44px;border-radius:12px;background:#fff7ed;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .contact-card .label { font-size:11px;color:#1A4A2E55;margin-bottom:2px; }
+  .contact-card .value { font-size:13px;font-weight:600;color:#1A4A2E;word-break:break-all;overflow-wrap:anywhere; }
 </style>
 </head>
 <body>
@@ -153,16 +141,14 @@
         <span style="font-weight:800;font-size:17px;color:#1A4A2E;letter-spacing:-.5px">SUNU<span style="color:#F5800A">MANGO</span></span>
       </div>
     </a>
-    <!-- Liens desktop -->
-    <div id="navDesktop" style="display:flex;gap:28px">
+    <div id="navDesktop" style="gap:28px">
       <a href="#varietes" class="nlink">Variétés</a>
       <a href="#destinations" class="nlink">Destinations</a>
       <a href="#services-section" class="nlink">Services</a>
       <a href="#evenements" class="nlink">Événements</a>
       <a href="#contact" class="nlink">Contact</a>
     </div>
-    <!-- Burger uniquement mobile -->
-    <button id="mBtn" style="cursor:none;background:none;border:none;display:none;flex-direction:column;gap:5px;padding:6px">
+    <button id="mBtn" style="cursor:none;background:none;border:none;flex-direction:column;gap:5px;padding:6px">
       <span style="display:block;width:22px;height:2px;background:#1A4A2E;border-radius:2px;transition:all .3s" id="b1"></span>
       <span style="display:block;width:22px;height:2px;background:#1A4A2E;border-radius:2px;transition:all .3s" id="b2"></span>
       <span style="display:block;width:22px;height:2px;background:#1A4A2E;border-radius:2px;transition:all .3s" id="b3"></span>
@@ -195,7 +181,7 @@
           Fondantes, juteuses et d'une qualité gustative incomparable — des vergers sénégalais aux marchés de 3 continents.
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <a href="#contact" class="btn-p">
+          <a href="https://wa.me/221776616619" target="_blank" class="btn-p">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Passer une commande
           </a>
@@ -269,7 +255,7 @@
         </div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Kent</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Gros fruit de forme ovoïde sans bec. Avec sa coloration rouge pourpre, sa chair si jaune, orangée, fondante, juteuse et sans fibres, la KENT se distingue également par sa qualité gustative excellente et sa bonne résistance au transport maritime.</p>
+          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Gros fruit ovoïde, coloration rouge pourpre, chair jaune orangée fondante, juteuse et sans fibres. Excellente qualité gustative et bonne résistance au transport maritime.</p>
           <div style="display:flex;flex-wrap:wrap;gap:5px">
             <span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">🚢 Maritime</span>
             <span style="font-size:11px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;padding:3px 10px;border-radius:20px">Grande distrib.</span>
@@ -280,7 +266,7 @@
         <div class="cph" style="background:#fffbf0"><img src="img/keitt (2).png" alt="Mangue Keitt" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Keitt</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">2ème variété exportée par le Sénégal, plus tardive. Forme ovale sans bec, coloration rouge rosé, chair jaune ferme sans fibre. Particulièrement adaptée au transport maritime.</p>
+          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Variété tardive, forme ovale, coloration rouge rosé, chair jaune ferme sans fibre. Particulièrement adaptée au transport maritime.</p>
           <div style="display:flex;flex-wrap:wrap;gap:5px">
             <span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">🚢 Maritime</span>
             <span style="font-size:11px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;padding:3px 10px;border-radius:20px">Tardive</span>
@@ -294,7 +280,7 @@
         </div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Tommy Atkins</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">La variété la plus vendue sur les marchés d'exportation. Coloration rouge vif, bonne résistance au transport maritime, destinée à la grande distribution nord-européenne.</p>
+          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">La variété la plus vendue à l'export. Coloration rouge vif, bonne résistance maritime, destinée à la grande distribution nord-européenne.</p>
           <div style="display:flex;flex-wrap:wrap;gap:5px">
             <span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">🚢 Maritime</span>
             <span style="font-size:11px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;padding:3px 10px;border-radius:20px">Grande distrib.</span>
@@ -316,7 +302,7 @@
         <div class="cph" style="background:#fffbf0"><img src="img/manille 2.png" alt="Mangue Manille" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Manille</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Mangue charnue riche en vitamines A et C ainsi que du fer.</p>
+          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Mangue charnue caractérisée par sa douceur et son apport en vitamines A, C et fer.</p>
           <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="font-size:11px;background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff;padding:3px 10px;border-radius:20px">Précoce</span></div>
         </div>
       </div>
@@ -342,7 +328,7 @@
         </div>
         <h3 style="font-size:16px;font-weight:700;color:white;margin-bottom:8px">Commande personnalisée</h3>
         <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:18px;line-height:1.6">Calibre et conditionnement sur mesure.</p>
-        <a href="#contact" class="btn-p" style="font-size:13px">
+        <a href="https://wa.me/221776616619" target="_blank" class="btn-p" style="font-size:13px">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           Commander
         </a>
@@ -360,18 +346,17 @@
       <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7">Par avion, bateau ou camion — vos mangues fraîches partout dans le monde.</p>
     </div>
 
-    <!-- CARTE avec image réelle + overlay SVG animé -->
+    <!-- CARTE — zoom sur mobile -->
     <div class="rv" style="margin-bottom:32px">
       <div class="world-map-container">
-        <div style="position:relative;border-radius:20px;overflow:hidden;background:#1a1a1a">
+        <!-- wrapper avec overflow:hidden pour le zoom mobile -->
+        <div class="map-img-wrap" style="position:relative;border-radius:20px;overflow:hidden;background:#111">
           <img src="img/carte.png" alt="Carte du monde SUNUMANGO" style="width:100%;height:auto;display:block;border-radius:20px">
           <svg viewBox="0 0 1344 768" style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <filter id="glowStrong"><feGaussianBlur stdDeviation="5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="glowS"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
-
-            <!-- Lignes droites animées depuis Sénégal -->
             <line x1="616" y1="328" x2="684" y2="201" stroke="#F5800A" stroke-width="1.5" opacity="0.7" stroke-dasharray="10,6"><animate attributeName="stroke-dashoffset" values="0;-64" dur="1.8s" repeatCount="indefinite"/></line>
             <line x1="616" y1="328" x2="676" y2="191" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.1s" repeatCount="indefinite"/></line>
             <line x1="616" y1="328" x2="723" y2="188" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.4s" repeatCount="indefinite"/></line>
@@ -382,39 +367,34 @@
             <line x1="616" y1="328" x2="676" y2="362" stroke="#F5800A" stroke-width="1.5" opacity="0.65" stroke-dasharray="8,5"><animate attributeName="stroke-dashoffset" values="0;-52" dur="1.3s" repeatCount="indefinite"/></line>
             <line x1="684" y1="201" x2="421" y2="232" stroke="#F5800A" stroke-width="1" opacity="0.35" stroke-dasharray="7,7"><animate attributeName="stroke-dashoffset" values="0;-56" dur="3.2s" repeatCount="indefinite"/></line>
             <line x1="421" y1="232" x2="402" y2="220" stroke="#F5800A" stroke-width="1" opacity="0.4" stroke-dasharray="6,5"><animate attributeName="stroke-dashoffset" values="0;-44" dur="1.5s" repeatCount="indefinite"/></line>
-
-            <!-- HUB SÉNÉGAL -->
-            <circle cx="616" cy="328" r="28" fill="#F5800A" opacity="0.08" filter="url(#glow)"><animate attributeName="r" values="18;35;18" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2s" repeatCount="indefinite"/></circle>
+            <!-- Hub Sénégal -->
+            <circle cx="616" cy="328" r="18" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="18;35;18" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2s" repeatCount="indefinite"/></circle>
             <circle cx="616" cy="328" r="14" fill="#F5800A" opacity="0.2"/>
-            <circle cx="616" cy="328" r="8" fill="#F5800A" filter="url(#glowStrong)"/>
+            <circle cx="616" cy="328" r="8" fill="#F5800A" filter="url(#glowS)"/>
             <circle cx="616" cy="328" r="3.5" fill="white"/>
             <rect x="554" y="345" width="125" height="26" rx="6" fill="rgba(0,0,0,0.78)"/>
-            <text x="616" y="362" text-anchor="middle" font-size="11.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif" letter-spacing="0.5">SÉNÉGAL · HUB</text>
-
-            <!-- PIN EUROPE -->
-            <circle cx="684" cy="201" r="20" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="11;24;11" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2.5s" repeatCount="indefinite"/></circle>
+            <text x="616" y="362" text-anchor="middle" font-size="11.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">SÉNÉGAL · HUB</text>
+            <!-- Europe -->
+            <circle cx="684" cy="201" r="11" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="11;24;11" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2.5s" repeatCount="indefinite"/></circle>
             <circle cx="684" cy="201" r="10" fill="#F5800A" opacity="0.25"/>
             <circle cx="684" cy="201" r="6" fill="#F5800A" filter="url(#glow)"/>
             <circle cx="684" cy="201" r="2.5" fill="white"/>
             <rect x="618" y="176" width="132" height="22" rx="5" fill="rgba(0,0,0,0.75)"/>
-            <text x="684" y="191" text-anchor="middle" font-size="10.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif" letter-spacing="0.5">EUROPE · 30 PAYS</text>
-
-            <!-- PIN USA -->
-            <circle cx="421" cy="232" r="20" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="11;24;11" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="3s" repeatCount="indefinite"/></circle>
+            <text x="684" y="191" text-anchor="middle" font-size="10.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">EUROPE · 30 PAYS</text>
+            <!-- Amérique -->
+            <circle cx="421" cy="232" r="11" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="11;24;11" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="3s" repeatCount="indefinite"/></circle>
             <circle cx="421" cy="232" r="10" fill="#F5800A" opacity="0.25"/>
             <circle cx="421" cy="232" r="6" fill="#F5800A" filter="url(#glow)"/>
             <circle cx="421" cy="232" r="2.5" fill="white"/>
             <rect x="348" y="207" width="148" height="22" rx="5" fill="rgba(0,0,0,0.75)"/>
-            <text x="422" y="222" text-anchor="middle" font-size="10.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif" letter-spacing="0.5">AMÉRIQUE · 2 PAYS</text>
-
-            <!-- Petits pins secondaires -->
+            <text x="422" y="222" text-anchor="middle" font-size="10.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">AMÉRIQUE · 2 PAYS</text>
+            <!-- Pins secondaires -->
             <circle cx="402" cy="220" r="5" fill="#F5800A" opacity="0.7"/><circle cx="402" cy="220" r="2" fill="white" opacity="0.9"/>
             <circle cx="652" cy="265" r="5" fill="#F5800A" opacity="0.7"/><circle cx="652" cy="265" r="2" fill="white" opacity="0.9"/>
             <circle cx="676" cy="191" r="5" fill="#F5800A" opacity="0.65"/><circle cx="676" cy="191" r="2" fill="white" opacity="0.9"/>
             <circle cx="723" cy="188" r="5" fill="#F5800A" opacity="0.65"/><circle cx="723" cy="188" r="2" fill="white" opacity="0.9"/>
             <circle cx="664" cy="233" r="5" fill="#F5800A" opacity="0.65"/><circle cx="664" cy="233" r="2" fill="white" opacity="0.9"/>
             <circle cx="676" cy="362" r="6" fill="#4ade80" opacity="0.8"/><circle cx="676" cy="362" r="2.5" fill="white" opacity="0.9"/>
-
             <!-- Légende -->
             <rect x="18" y="724" width="230" height="30" rx="7" fill="rgba(0,0,0,0.65)"/>
             <circle cx="36" cy="739" r="6" fill="#F5800A"/><circle cx="36" cy="739" r="2.5" fill="white"/>
@@ -437,8 +417,8 @@
           <div style="display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:#F5800A;flex-shrink:0"></span>Turquie</div>
         </div>
         <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Maritime</span>
-          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Camion</span>
+          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Maritime</span>
+          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Camion</span>
         </div>
       </div>
       <div class="dcard rv" style="animation-delay:.1s">
@@ -452,8 +432,8 @@
           <div style="display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:#F5800A;flex-shrink:0"></span>Sénégal</div>
         </div>
         <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Avion</span>
-          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Camion</span>
+          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2l-1.7 1.7 6.3 3.9-2.5 2.8-1.7-.3-1.4 1.4 2.6 1.3 1.3 2.6 1.4-1.4-.3-1.7 2.8-2.5 3.9 6.3 1.7-1.7z"/></svg>Avion</span>
+          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Camion</span>
         </div>
       </div>
       <div class="dcard rv" style="animation-delay:.2s">
@@ -465,8 +445,8 @@
           <div style="display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;border-radius:50%;background:#F5800A;flex-shrink:0"></span>Canada</div>
         </div>
         <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Avion</span>
-          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Maritime</span>
+          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2l-1.7 1.7 6.3 3.9-2.5 2.8-1.7-.3-1.4 1.4 2.6 1.3 1.3 2.6 1.4-1.4-.3-1.7 2.8-2.5 3.9 6.3 1.7-1.7z"/></svg>Avion</span>
+          <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Maritime</span>
         </div>
       </div>
     </div>
@@ -501,43 +481,21 @@
         <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#1A4A2E;margin-top:10px;letter-spacing:-.5px">Un partenaire fiable<br>&amp; professionnel</h2>
         <p style="color:#1A4A2E75;font-size:14px;margin-top:14px;line-height:1.7">Enregistrée au système REX sous le numéro <strong style="color:#1A4A2E">SNREX520ASX</strong>, SUNUMANGO garantit la conformité de ses exportations vers l'UE, la Suisse, la Norvège et la Turquie.</p>
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
-
-          <!-- Cert 1 — image remplace icône -->
           <div class="cert">
-            <img src="img/global-g-a-p-logo-png_seeklogo-302518.png" alt="GlobalGAP" class="cert-img"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#f0fdf4;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
+            <img src="img/global-g-a-p-logo-png_seeklogo-302518.png" alt="GlobalGAP" class="cert-img" style="background:#f0fdf4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#f0fdf4;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
             <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">Certification GlobalGAP</div><div style="font-size:12px;color:#1A4A2E55;margin-top:1px">Bonnes pratiques agricoles</div></div>
           </div>
-
-          <!-- Cert 2 — image remplace icône -->
           <div class="cert">
-            <img src="img/co.png" alt="DPV" class="cert-img"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#eff6ff;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
+            <img src="img/co.png" alt="DPV" class="cert-img" style="background:#eff6ff" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#eff6ff;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">DPV — Protection des Végétaux</div><div style="font-size:12px;color:#1A4A2E55;margin-top:1px">Phytosanitaire et certificats d'origine</div></div>
           </div>
-
-          <!-- Cert 3 — image remplace icône -->
           <div class="cert">
-            <img src="img/rex.png" alt="ASEPEX" class="cert-img"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#fffbeb;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            </div>
+            <img src="img/rex.png" alt="ASEPEX" class="cert-img" style="background:#fffbeb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#fffbeb;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
             <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">ASEPEX — Partenaire officiel</div><div style="font-size:12px;color:#1A4A2E55;margin-top:1px">Agence de promotion des exportations</div></div>
           </div>
-
-
-
-
-
-          
-
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
@@ -550,127 +508,38 @@
   </div>
 </section>
 
-
-
-<!-- NOS PARTENAIRES — défilement droite vers gauche sur fond vert -->
+<!-- NOS PARTENAIRES -->
 <section style="background:#1A4A2E;padding:44px 0 0;overflow:hidden">
-  <div style="max-width:1280px;margin:0 auto;padding:0 20px 24px">
-    <div style="text-align:center">
-      <span style="color:#fde68a;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Ils nous font confiance</span>
-      <h3 style="font-size:clamp(1.2rem,2vw,1.6rem);font-weight:700;color:white;margin-top:8px">Nos Partenaires</h3>
-    </div>
+  <div style="max-width:1280px;margin:0 auto;padding:0 20px 24px;text-align:center">
+    <span style="color:#fde68a;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Ils nous font confiance</span>
+    <h3 style="font-size:clamp(1.2rem,2vw,1.6rem);font-weight:700;color:white;margin-top:8px">Nos Partenaires</h3>
   </div>
-  <!-- Bande avec logos défilants -->
-  <div style="background:#2D7A50;padding:20px 0;overflow:hidden;position:relative">
-    <!-- Dégradés sur les bords pour effet fondu -->
+  <div style="background:#2D7A50;padding:18px 0;overflow:hidden;position:relative">
     <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,#2D7A50,transparent);z-index:2;pointer-events:none"></div>
     <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,#2D7A50,transparent);z-index:2;pointer-events:none"></div>
-
     <div style="display:flex;width:max-content;animation:partnerScroll 32s linear infinite">
-      <!-- Série 1 -->
       <div style="display:flex;align-items:center;gap:20px;padding-right:20px;flex-shrink:0">
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/UNCCIAD .jpg.jpeg" alt="GlobalGAP" style="max-height:40px;max-width:140px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span>
-        </div>
-
-        
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span>
-        </div>
-
-
-<div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span>
-        </div>
-
-
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/UNCCIAD .jpg.jpeg" alt="GlobalGAP" style="max-height:40px;max-width:140px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span>
-        </div>
-        
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span>
-        </div>
-
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/UNCCIAD .jpg.jpeg" alt="UNCCIAD" style="max-height:40px;max-width:140px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/UNCCIAD .jpg.jpeg" alt="UNCCIAD" style="max-height:40px;max-width:140px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
       </div>
-      <!-- Série 2 (copie exacte pour boucle infinie) -->
       <div style="display:flex;align-items:center;gap:20px;padding-right:20px;flex-shrink:0" aria-hidden="true">
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span>
-        </div>
-
-        
-
-<div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span>
-        </div>
-
-        
-<div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span>
-        </div>
-
-
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span>
-        </div>
-
-        
-
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/UNCCIAD .jpg.jpeg" alt="GlobalGAP" style="max-height:40px;max-width:140px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span>
-        </div>
-<div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)">
-          <img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span>
-        </div>
-
-
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/UNCCIAD .jpg.jpeg" alt="UNCCIAD" style="max-height:40px;max-width:140px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EVENEMENTS - VERSION CORRIGÉE -->
+<!-- EVENEMENTS -->
 <section id="evenements" style="padding:88px 0;background:#FEF6E4">
   <div style="max-width:1280px;margin:0 auto;padding:0 20px">
     <div class="rv" style="text-align:center;margin-bottom:52px">
@@ -680,29 +549,19 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
 
-      <!-- CARD 1 : SHANGHAI - CORRIGÉE -->
+      <!-- CARD 1 : SHANGHAI -->
       <div class="rv ev-card" style="background:white;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none">
-        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0;background:#f5f5f5;">
-          <div class="ev-track" id="ev-track-1" style="display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/WhatsApp Image 2026-02-25 at 01.18.34.jpeg" alt="Shanghai 2023" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#7c3aed)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>SHANGHAI 2023</div>'">
-            </div>
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/chine2.jpeg" alt="Shanghai 2023" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#3730a3,#6d28d9)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>SHANGHAI 2023</div>'">
-            </div>
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/chine3.jpeg" alt="Shanghai 2023" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#5b21b6,#7c3aed)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>SHANGHAI 2023</div>'">
+        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0">
+          <div style="position:absolute;inset:0;overflow:hidden">
+            <div id="ev-track-1" style="display:flex;width:300%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#4c1d95,#7c3aed)"><img src="img/WhatsApp Image 2026-02-25 at 01.18.34.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#3730a3,#6d28d9)"><img src="img/chine2.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#5b21b6,#7c3aed)"><img src="img/chine3.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
             </div>
           </div>
-          <button onclick="evSlide('1',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button onclick="evSlide('1',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10" id="ev-dots-1"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
+          <button onclick="evSlide('1',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;z-index:2;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button onclick="evSlide('1',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;z-index:2;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2" id="ev-dots-1"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
         </div>
         <div style="padding:22px 24px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
@@ -714,29 +573,19 @@
         </div>
       </div>
 
-      <!-- CARD 2 : BERLIN - CORRIGÉE -->
+      <!-- CARD 2 : BERLIN -->
       <div class="rv ev-card" style="background:white;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none;animation-delay:.1s">
-        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0;background:#f5f5f5;">
-          <div class="ev-track" id="ev-track-2" style="display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/brlin2.jpeg" alt="Fruit Logistica 2024" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e3a5f,#1d4ed8)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>BERLIN 2024</div>'">
-            </div>
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/berlin1.jpeg" alt="Fruit Logistica 2024" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e40af,#2563eb)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>BERLIN 2024</div>'">
-            </div>
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/berlin3.jpeg" alt="Fruit Logistica 2024" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e3a5f,#3b82f6)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>BERLIN 2024</div>'">
+        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0">
+          <div style="position:absolute;inset:0;overflow:hidden">
+            <div id="ev-track-2" style="display:flex;width:300%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#1e3a5f,#1d4ed8)"><img src="img/brlin2.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#1e40af,#2563eb)"><img src="img/berlin1.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#1e3a5f,#3b82f6)"><img src="img/berlin3.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
             </div>
           </div>
-          <button onclick="evSlide('2',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button onclick="evSlide('2',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10" id="ev-dots-2"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
+          <button onclick="evSlide('2',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;z-index:2;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button onclick="evSlide('2',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;z-index:2;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2" id="ev-dots-2"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
         </div>
         <div style="padding:22px 24px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
@@ -748,30 +597,20 @@
         </div>
       </div>
 
-      <!-- CARD 3 : RIMINI - CORRIGÉE -->
+      <!-- CARD 3 : RIMINI -->
       <div class="rv ev-card" style="background:white;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none;animation-delay:.2s">
-        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0;background:#f5f5f5;">
-          <div class="ev-track" id="ev-track-3" style="display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/foiritali.jpeg" alt="Macfrut 2025" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#064e3b,#065f46)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>MACFRUT 2025</div>'">
-            </div>
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/Macfrut-.jpeg" alt="Macfrut 2025" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#065f46,#0d9488)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>MACFRUT 2025</div>'">
-            </div>
-            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
-              <img src="img/Macfrut-2024.jpg" alt="Macfrut 2025" 
-                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
-                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#064e3b,#16a34a)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>MACFRUT 2025</div>'">
+        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0">
+          <div style="position:absolute;inset:0;overflow:hidden">
+            <div id="ev-track-3" style="display:flex;width:300%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#064e3b,#065f46)"><img src="img/foiritali.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#065f46,#0d9488)"><img src="img/Macfrut-.jpeg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+              <div style="width:33.333%;height:100%;flex-shrink:0;background:linear-gradient(135deg,#064e3b,#16a34a)"><img src="img/Macfrut-2024.jpg" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
             </div>
           </div>
-          <button onclick="evSlide('3',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button onclick="evSlide('3',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10" id="ev-dots-3"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:white;font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.35);font-weight:600;z-index:10">À venir</div>
+          <button onclick="evSlide('3',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;z-index:2;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button onclick="evSlide('3',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;z-index:2;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2" id="ev-dots-3"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:white;font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.35);font-weight:600;z-index:2">À venir</div>
         </div>
         <div style="padding:22px 24px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
@@ -795,22 +634,50 @@
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:white;margin-top:10px;letter-spacing:-.5px">Tous Nos Services</h2>
       <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7">Le Groupe JETSET accompagne ses clients sur trois domaines d'excellence.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+
       <div class="svc-card rv">
-        <div style="position:relative;overflow:hidden"><img src="img/maaangggue-e.jpeg" alt="SUNUMANGO Export" class="svc-img"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div></div>
-        <div class="svc-logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <div style="padding:16px 20px 24px;text-align:center"><h3 style="font-size:16px;font-weight:700;color:#1A4A2E;margin-bottom:8px">SUNUMANGO</h3><p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Exportation de mangues d'exception du Sénégal vers 36 destinations mondiales. Certifié GlobalGAP.</p></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="img/maaangggue-e.jpeg" alt="SUNUMANGO Export" class="svc-img">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div>
+        </div>
+        <div class="svc-logo">
+          <img src="img/logo-sunumango.png" alt="SUNUMANGO" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'">
+        </div>
+        <div style="padding:14px 20px 24px;text-align:center">
+          <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">SUNUMANGO</h3>
+          <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Exportation de mangues d'exception du Sénégal vers 36 destinations mondiales. Certifié GlobalGAP.</p>
+        </div>
       </div>
+
       <div class="svc-card rv" style="animation-delay:.1s">
-        <div style="position:relative;overflow:hidden"><img src="img/immobilierrrrree.jpeg" alt="JETSET IMMOBILIER" class="svc-img"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div></div>
-        <div class="svc-logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div style="padding:16px 20px 24px;text-align:center"><h3 style="font-size:16px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET IMMOBILIER</h3><p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Solutions immobilières haut de gamme. Acquisition, gestion et valorisation de biens résidentiels et commerciaux.</p></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="img/immobilierrrrree.jpeg" alt="JETSET IMMOBILIER" class="svc-img">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div>
+        </div>
+        <div class="svc-logo">
+          <img src="img/jettt.jpeg" alt="JETSET" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'">
+        </div>
+        <div style="padding:14px 20px 24px;text-align:center">
+          <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET IMMOBILIER</h3>
+          <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Solutions immobilières haut de gamme. Acquisition, gestion et valorisation de biens résidentiels et commerciaux.</p>
+        </div>
       </div>
+
       <div class="svc-card rv" style="animation-delay:.2s">
-        <div style="position:relative;overflow:hidden"><img src="img/jetsettravel.png" alt="JETSET TRAVELS" class="svc-img"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div></div>
-        <div class="svc-logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
-        <div style="padding:16px 20px 24px;text-align:center"><h3 style="font-size:16px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET TRAVELS</h3><p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Agence de voyages d'affaires et de loisirs. Organisation de déplacements professionnels et séjours personnalisés.</p></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="img/jetsettravel.png" alt="JETSET TRAVELS" class="svc-img">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div>
+        </div>
+        <div class="svc-logo">
+          <img src="img/avionnn.jpeg" alt="Avion" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.style.display='none'">
+        </div>
+        <div style="padding:14px 20px 24px;text-align:center">
+          <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET TRAVELS</h3>
+          <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Agence de voyages d'affaires et de loisirs. Organisation de déplacements professionnels et séjours personnalisés.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -824,22 +691,27 @@
       <p style="color:#1A4A2E75;font-size:14px;margin-top:12px;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto">Notre équipe vous accompagne du calibre au conditionnement, en passant par la logistique internationale.</p>
     </div>
     <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
-      <a href="tel:+221775236473" style="display:flex;align-items:center;gap:14px;text-decoration:none;padding:18px;border-radius:16px;background:white;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none" onmouseover="this.style.borderColor='#F5800A';this.style.boxShadow='0 8px 24px rgba(245,128,10,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(212,168,67,.2)';this.style.boxShadow='none';this.style.transform='translateY(0)'">
-        <div style="width:44px;height:44px;border-radius:12px;background:#fff7ed;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
-        <div><div style="font-size:11px;color:#1A4A2E55;margin-bottom:2px">Téléphone 1</div><div style="font-size:14px;font-weight:600;color:#1A4A2E">+221 77 523 64 73</div></div>
+
+      <a href="tel:+221775236473" class="contact-card">
+        <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+        <div style="min-width:0"><div class="label">Téléphone 1</div><div class="value">+221 77 523 64 73</div></div>
       </a>
-      <a href="tel:+221783781313" style="display:flex;align-items:center;gap:14px;text-decoration:none;padding:18px;border-radius:16px;background:white;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none" onmouseover="this.style.borderColor='#F5800A';this.style.boxShadow='0 8px 24px rgba(245,128,10,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(212,168,67,.2)';this.style.boxShadow='none';this.style.transform='translateY(0)'">
-        <div style="width:44px;height:44px;border-radius:12px;background:#fff7ed;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
-        <div><div style="font-size:11px;color:#1A4A2E55;margin-bottom:2px">Téléphone 2</div><div style="font-size:14px;font-weight:600;color:#1A4A2E">+221 78 378 13 13</div></div>
+
+      <a href="tel:+221783781313" class="contact-card">
+        <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+        <div style="min-width:0"><div class="label">Téléphone 2</div><div class="value">+221 78 378 13 13</div></div>
       </a>
-      <a href="/cdn-cgi/l/email-protection#21424e4f554042556152544f544c404f464e0f424e4c" style="display:flex;align-items:center;gap:14px;text-decoration:none;padding:18px;border-radius:16px;background:white;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none" onmouseover="this.style.borderColor='#F5800A';this.style.boxShadow='0 8px 24px rgba(245,128,10,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(212,168,67,.2)';this.style.boxShadow='none';this.style.transform='translateY(0)'">
-        <div style="width:44px;height:44px;border-radius:12px;background:#fff7ed;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div><div style="font-size:11px;color:#1A4A2E55;margin-bottom:2px">Email général</div><div style="font-size:14px;font-weight:600;color:#1A4A2E"><span class="__cf_email__" data-cfemail="3f5c50514b5e5c4b7f4c4a514a525e515850115c5052">[email&#160;protected]</span></div></div>
+
+      <a href="mailto:bassirou.ba@sunumango.com" class="contact-card">
+        <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div style="min-width:0"><div class="label">Email général</div><div class="value">bassirou.ba@sunumango.com</div></div>
       </a>
-      <a href="/cdn-cgi/l/email-protection#7714181a1a1205141e161b37040219021a161910185914181a" style="display:flex;align-items:center;gap:14px;text-decoration:none;padding:18px;border-radius:16px;background:white;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none" onmouseover="this.style.borderColor='#F5800A';this.style.boxShadow='0 8px 24px rgba(245,128,10,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(212,168,67,.2)';this.style.boxShadow='none';this.style.transform='translateY(0)'">
-        <div style="width:44px;height:44px;border-radius:12px;background:#fff7ed;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div><div style="font-size:11px;color:#1A4A2E55;margin-bottom:2px">Email commercial</div><div style="font-size:14px;font-weight:600;color:#1A4A2E"><span class="__cf_email__" data-cfemail="6704080a0a0215040e060b27141209120a060900084904080a">[email&#160;protected]</span></div></div>
+
+      <a href="mailto:sunumango@sunumango.com" class="contact-card">
+        <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div style="min-width:0"><div class="label">Email commercial</div><div class="value">sunumango@sunumango.com</div></div>
       </a>
+
     </div>
   </div>
 </section>
@@ -847,13 +719,10 @@
 <!-- FOOTER -->
 <footer style="background:#0D2318;padding:52px 0 36px">
   <div style="max-width:1280px;margin:0 auto;padding:0 20px">
-    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:start;margin-bottom:40px" id="footer-grid">
-
-      <!-- Logo + description -->
+    <div id="footer-grid" style="display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:start;margin-bottom:40px">
       <div>
         <div style="margin-bottom:12px">
-          <img src="img/logo-sunumango.png" alt="SUNUMANGO" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1)"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="img/logo-sunumango.png" alt="SUNUMANGO" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div style="display:none;align-items:center;gap:8px">
             <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#F5800A,#C05C00);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/></svg></div>
             <span style="font-weight:800;font-size:16px;color:white">SUNU<span style="color:#F5800A">MANGO</span></span>
@@ -861,8 +730,6 @@
         </div>
         <p style="color:rgba(255,255,255,.3);font-size:12px;line-height:1.8">Exportateur sénégalais de mangues d'exception<br>REX : SNREX520ASX — Certifié GlobalGAP</p>
       </div>
-
-      <!-- Nav links -->
       <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
         <a href="#varietes" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Variétés</a>
         <a href="#destinations" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Destinations</a>
@@ -870,24 +737,12 @@
         <a href="#evenements" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Événements</a>
         <a href="#contact" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Contact</a>
       </div>
-
-      <!-- Social — centré sur mobile via classe -->
-      <div class="social-footer-wrap" style="text-align:right">
+      <div class="social-footer-col" style="text-align:right">
         <p style="color:rgba(255,255,255,.4);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">Retrouvez-nous sur</p>
-        <div id="socialIcons" style="display:flex;gap:10px;justify-content:flex-end">
-          <a href="#" class="social-icon" title="Facebook">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" class="social-icon" title="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </a>
-          <a href="#" class="social-icon" title="Twitter / X">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+        <div class="social-row" style="display:flex;gap:10px;justify-content:flex-end">
+          <a href="#" class="social-icon" title="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-icon" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="social-icon" title="Twitter / X"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
       </div>
     </div>
@@ -897,7 +752,8 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// Cursor
 const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-8)+'px';cur.style.top=(my-8)+'px'});
@@ -907,47 +763,56 @@ document.querySelectorAll('a,button,.vcard,.dcard,.svc-card,.cert,.tcard').forEa
   el.addEventListener('mouseleave',()=>{cur.classList.remove('cur-big');ring.classList.remove('ring-sm')});
 });
 
+// Mobile menu
 const mBtn=document.getElementById('mBtn'),mMenu=document.getElementById('mMenu');
 mBtn.addEventListener('click',()=>{
   const o=mMenu.style.display==='flex';
   mMenu.style.display=o?'none':'flex';
-  document.getElementById('b1').style.transform=o?'':' rotate(45deg) translate(5px,5px)';
+  document.getElementById('b1').style.transform=o?'':'rotate(45deg) translate(5px,5px)';
   document.getElementById('b2').style.opacity=o?'1':'0';
-  document.getElementById('b3').style.transform=o?'':' rotate(-45deg) translate(5px,-5px)';
+  document.getElementById('b3').style.transform=o?'':'rotate(-45deg) translate(5px,-5px)';
 });
 function cMenu(){mMenu.style.display='none';['b1','b2','b3'].forEach(id=>{const el=document.getElementById(id);el.style.transform='';el.style.opacity='1'});}
 
+// Reveal on scroll
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
 
+// Nav shadow
 const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>60?'0 4px 24px rgba(0,0,0,.07)':' none'});
+window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>60?'0 4px 24px rgba(0,0,0,.07)':'none'});
 
+// Event sliders
 const evState={1:0,2:0,3:0};
 function evSlide(id,dir){
   evState[id]=(evState[id]+dir+3)%3;
   const idx=evState[id];
-  document.getElementById('ev-track-'+id).style.transform='translateX(-'+(idx*100)+'%)';
+  document.getElementById('ev-track-'+id).style.transform='translateX(-'+(idx*33.333)+'%)';
   document.querySelectorAll('#ev-dots-'+id+' .ev-dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
 }
 setInterval(()=>evSlide('1',1),4000);
 setInterval(()=>evSlide('2',1),4800);
 setInterval(()=>evSlide('3',1),5500);
 
-function chkM(){const m=window.innerWidth<768;document.querySelectorAll('.hero-stat-m').forEach(el=>el.style.display=m?'flex':'none');document.querySelectorAll('.hero-stat-d').forEach(el=>el.style.display=m?'none':'block');}
+// Responsive hero & footer
+function chkM(){
+  const m=window.innerWidth<768;
+  document.querySelectorAll('.hero-stat-m').forEach(el=>el.style.display=m?'flex':'none');
+  document.querySelectorAll('.hero-stat-d').forEach(el=>el.style.display=m?'none':'block');
+}
 chkM();window.addEventListener('resize',chkM);
 
 const hgi=document.getElementById('hero-grid-inner');
-function fixHero(){if(window.innerWidth<768)hgi.style.gridTemplateColumns='1fr';else hgi.style.gridTemplateColumns='1fr 1fr';}
+function fixHero(){hgi.style.gridTemplateColumns=window.innerWidth<768?'1fr':'1fr 1fr';}
 fixHero();window.addEventListener('resize',fixHero);
 
 function fixFooter(){
-  const footer=document.querySelector('footer > div > div:first-child');
-  if(!footer)return;
-  if(window.innerWidth<768)footer.style.gridTemplateColumns='1fr';
-  else footer.style.gridTemplateColumns='1fr auto 1fr';
+  const fg=document.getElementById('footer-grid');
+  if(!fg)return;
+  fg.style.gridTemplateColumns=window.innerWidth<768?'1fr':'1fr auto 1fr';
 }
 fixFooter();window.addEventListener('resize',fixFooter);
 </script>
