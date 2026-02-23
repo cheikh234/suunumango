@@ -670,7 +670,7 @@
   </div>
 </section>
 
-<!-- EVENEMENTS -->
+<!-- EVENEMENTS - VERSION CORRIGÉE -->
 <section id="evenements" style="padding:88px 0;background:#FEF6E4">
   <div style="max-width:1280px;margin:0 auto;padding:0 20px">
     <div class="rv" style="text-align:center;margin-bottom:52px">
@@ -680,17 +680,29 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
 
-      <!-- CARD 1 : SHANGHAI -->
+      <!-- CARD 1 : SHANGHAI - CORRIGÉE -->
       <div class="rv ev-card" style="background:white;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none">
-        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0">
+        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0;background:#f5f5f5;">
           <div class="ev-track" id="ev-track-1" style="display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#4c1d95,#7c3aed);flex-shrink:0"><img src="img/WhatsApp Image 2026-02-25 at 01.18.34.jpeg" alt="Shanghai 2023" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#3730a3,#6d28d9);flex-shrink:0"><img src="img/chine2.jpeg" alt="Shanghai 2023" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#5b21b6,#7c3aed);flex-shrink:0"><img src="img/chine3.jpeg" alt="Shanghai 2023" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/WhatsApp Image 2026-02-25 at 01.18.34.jpeg" alt="Shanghai 2023" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#7c3aed)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>SHANGHAI 2023</div>'">
+            </div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/chine2.jpeg" alt="Shanghai 2023" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#3730a3,#6d28d9)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>SHANGHAI 2023</div>'">
+            </div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/chine3.jpeg" alt="Shanghai 2023" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#5b21b6,#7c3aed)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>SHANGHAI 2023</div>'">
+            </div>
           </div>
-          <button onclick="evSlide('1',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button onclick="evSlide('1',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px" id="ev-dots-1"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
+          <button onclick="evSlide('1',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button onclick="evSlide('1',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10" id="ev-dots-1"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
         </div>
         <div style="padding:22px 24px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
@@ -702,17 +714,29 @@
         </div>
       </div>
 
-      <!-- CARD 2 : BERLIN -->
+      <!-- CARD 2 : BERLIN - CORRIGÉE -->
       <div class="rv ev-card" style="background:white;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none;animation-delay:.1s">
-        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0">
+        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0;background:#f5f5f5;">
           <div class="ev-track" id="ev-track-2" style="display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#1e3a5f,#1d4ed8);flex-shrink:0"><img src="img/brlin2.jpeg" alt="Fruit Logistica 2024" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#1e40af,#2563eb);flex-shrink:0"><img src="img/berlin1.jpeg" alt="Fruit Logistica 2024" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#1e3a5f,#3b82f6);flex-shrink:0"><img src="img/berlin3.jpeg" alt="Fruit Logistica 2024" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/brlin2.jpeg" alt="Fruit Logistica 2024" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e3a5f,#1d4ed8)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>BERLIN 2024</div>'">
+            </div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/berlin1.jpeg" alt="Fruit Logistica 2024" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e40af,#2563eb)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>BERLIN 2024</div>'">
+            </div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/berlin3.jpeg" alt="Fruit Logistica 2024" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e3a5f,#3b82f6)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>BERLIN 2024</div>'">
+            </div>
           </div>
-          <button onclick="evSlide('2',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button onclick="evSlide('2',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px" id="ev-dots-2"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
+          <button onclick="evSlide('2',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button onclick="evSlide('2',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10" id="ev-dots-2"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
         </div>
         <div style="padding:22px 24px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
@@ -724,18 +748,30 @@
         </div>
       </div>
 
-      <!-- CARD 3 : RIMINI -->
+      <!-- CARD 3 : RIMINI - CORRIGÉE -->
       <div class="rv ev-card" style="background:white;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none;animation-delay:.2s">
-        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0">
+        <div style="position:relative;height:220px;overflow:hidden;border-radius:22px 22px 0 0;background:#f5f5f5;">
           <div class="ev-track" id="ev-track-3" style="display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)">
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#064e3b,#065f46);flex-shrink:0"><img src="img/foiritali.jpeg" alt="Macfrut 2025" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#065f46,#0d9488);flex-shrink:0"><img src="img/Macfrut-.jpeg" alt="Macfrut 2025" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#064e3b,#16a34a);flex-shrink:0"><img src="img/Macfrut-2024.jpg" alt="Macfrut 2025" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'"></div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/foiritali.jpeg" alt="Macfrut 2025" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#064e3b,#065f46)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>MACFRUT 2025</div>'">
+            </div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/Macfrut-.jpeg" alt="Macfrut 2025" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#065f46,#0d9488)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>MACFRUT 2025</div>'">
+            </div>
+            <div style="min-width:100%;height:100%;flex-shrink:0;background:#f5f5f5;">
+              <img src="img/Macfrut-2024.jpg" alt="Macfrut 2025" 
+                   style="width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5;"
+                   onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#064e3b,#16a34a)';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold\'>MACFRUT 2025</div>'">
+            </div>
           </div>
-          <button onclick="evSlide('3',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button onclick="evSlide('3',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px" id="ev-dots-3"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:white;font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.35);font-weight:600">À venir</div>
+          <button onclick="evSlide('3',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button onclick="evSlide('3',1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:white;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s;z-index:10" onmouseover="this.style.background='#F5800A'" onmouseout="this.style.background='rgba(0,0,0,.45)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10" id="ev-dots-3"><span class="ev-dot on"></span><span class="ev-dot"></span><span class="ev-dot"></span></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:white;font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.35);font-weight:600;z-index:10">À venir</div>
         </div>
         <div style="padding:22px 24px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
