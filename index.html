@@ -82,7 +82,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
 .grid3 { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
 .grid-cards { display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px; }
 
-/* MAP — nouveau style sans zoom forcé, centrage image */
 .map-img-wrap {
   overflow:hidden;
   border-radius:20px;
@@ -106,7 +105,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
   border-radius:20px;
 }
 
-/* Sur mobile, on garde l'image visible sans zoom excessif */
 @media(max-width:768px){
   .map-img-wrap img {
     width:100%;
@@ -127,23 +125,22 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
 .ev-dot { display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s;cursor:none; }
 .ev-dot.on { background:white;width:20px;border-radius:4px; }
 
-/* Contact cards */
 .contact-card { display:flex;align-items:center;gap:14px;padding:16px 18px;background:white;border-radius:16px;border:1px solid rgba(212,168,67,.2);text-decoration:none;transition:all .25s;cursor:none; }
 .contact-card:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateY(-3px); }
 .contact-card .icon-box { width:42px;height:42px;border-radius:10px;background:#fff7f0;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
 .contact-card .label { font-size:11px;color:#1A4A2E55;font-weight:600;text-transform:uppercase;letter-spacing:.8px; }
 .contact-card .value { font-size:13px;color:#1A4A2E;font-weight:600;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
 
-/* ── RESPONSIVE ── */
 @media(max-width:900px){
   .cert-grid { grid-template-columns:1fr!important; }
   .grid2 { grid-template-columns:1fr!important;gap:28px; }
   .grid3 { grid-template-columns:1fr!important;gap:12px; }
 }
 
+/* ── MODIFICATION 1 : Mangue plus grande ── */
 @media(min-width:769px){
   .hero-mango-img {
-    width: 38% !important;
+    width: 80% !important;
     border: 5px solid white;
     border-radius: 16px;
   }
@@ -151,7 +148,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
 
 @media(max-width:768px){
   .hero-mango-img {
-    width: 55% !important;
+    width: 100% !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
@@ -228,7 +225,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
           Depuis les vergers de la zone des Niayes jusqu'aux 3 continents
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <!-- WhatsApp avec message pré-rempli -->
           <a href="https://wa.me/221776616619?text=Bonjour%20SUNUMANGO%2C%20je%20souhaite%20passer%20une%20commande%20de%20mangues.%20Pouvez-vous%20me%20communiquer%20vos%20disponibilit%C3%A9s%2C%20vari%C3%A9t%C3%A9s%20et%20tarifs%20%3F%20Merci." target="_blank" class="btn-p">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Passer une commande
@@ -237,23 +233,23 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
         </div>
       </div>
 
-      <!-- COLONNE DROITE — image unique -->
+      <!-- COLONNE DROITE — image mangue agrandie -->
       <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:300px">
         <img
-          src="img/mangueimage.jpg"
+          src="img/deuxiememangue.jpg"
           alt="Mangue Kent"
           class="hero-mango-img"
-          style="position:relative;z-index:2;width:38%;filter:drop-shadow(0 20px 40px rgba(26,74,46,.4));"
+          style="position:relative;z-index:2;width:80%;filter:drop-shadow(0 20px 40px rgba(26,74,46,.4));"
         >
-        <div class="hero-stat-d" style="position:absolute;left:-20px;top:10px">
+        <!-- <div class="hero-stat-d" style="position:absolute;left:-20px;top:10px">
           <div class="sbadge"><div style="font-size:26px;font-weight:800;color:#1A4A2E;line-height:1">36</div><div style="font-size:11px;color:#1A4A2E80;margin-top:3px">Destinations</div></div>
-        </div>
-        <div class="hero-stat-d" style="position:absolute;right:-10px;bottom:30px">
+        </div> -->
+        <!-- <div class="hero-stat-d" style="position:absolute;right:-10px;bottom:30px">
           <div class="sbadge"><div style="font-size:26px;font-weight:800;color:#F5800A;line-height:1">5+</div><div style="font-size:11px;color:#1A4A2E80;margin-top:3px">Variétés</div></div>
-        </div>
-        <div class="hero-stat-d" style="position:absolute;left:16px;bottom:-8px">
+        </div> -->
+        <!-- <div class="hero-stat-d" style="position:absolute;left:16px;bottom:-8px">
           <div class="sbadge"><div style="font-size:26px;font-weight:800;color:#1A4A2E;line-height:1">3</div><div style="font-size:11px;color:#1A4A2E80;margin-top:3px">Continents</div></div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -288,56 +284,56 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
     <div class="rv" style="text-align:center;margin-bottom:50px">
       <span style="color:#F5800A;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Notre collection</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#1A4A2E;margin-top:10px;letter-spacing:-.5px">Nos Variétés de Mangues</h2>
-      <p style="color:#1A4A2E80;font-size:14px;margin-top:10px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7">Cinq variétés d'exception sélectionnées pour leur qualité gustative et leur résistance au transport.</p>
+      <p style="color:#1A4A2E;font-size:14px;margin-top:10px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7">Cinq variétés d'exception sélectionnées pour leur qualité gustative et leur résistance au transport.</p>
     </div>
     <div class="grid-cards">
       <div class="vcard rv">
         <div class="cph" style="background:#fffbf0"><img src="img/kent (2).png" alt="Mangue Kent" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Kent</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Gros fruit ovoïde, coloration rouge pourpre, chair jaune orangée fondante, juteuse et sans fibres. Excellente qualité gustative et bonne résistance au transport maritime.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">Gros fruit ovoïde, coloration rouge pourpre, chair jaune orangée fondante, juteuse et sans fibres. Excellente qualité gustative et bonne résistance au transport maritime.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.08s">
         <div class="cph" style="background:#fffbf0"><img src="img/keitt (2).png" alt="Mangue Keitt" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Keitt</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Variété tardive, forme ovale, coloration rouge rosé, chair jaune ferme sans fibre. Particulièrement adaptée au transport maritime.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">Variété tardive, forme ovale, coloration rouge rosé, chair jaune ferme sans fibre. Particulièrement adaptée au transport maritime.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.14s">
         <div class="cph" style="background:#fffbf0"><img src="img/tomyy.png" alt="Tommy Atkins" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Tommy Atkins</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">La variété la plus vendue à l'export. Coloration rouge vif, bonne résistance maritime, destinée à la grande distribution nord-européenne.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">La variété la plus vendue à l'export. Coloration rouge vif, bonne résistance maritime, destinée à la grande distribution nord-européenne.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.2s">
         <div class="cph" style="background:#fffbf0"><img src="img/zillgem.png" alt="Mangue Zill" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Zill</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Variété précoce, petit calibre, coloration rouge carmin. Chair abricot tendre, juteuse et parfumée. Adaptée aux expéditions avion.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">Variété précoce, petit calibre, coloration rouge carmin. Chair abricot tendre, juteuse et parfumée. Adaptée aux expéditions avion.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.26s">
         <div class="cph" style="background:#fffbf0"><img src="img/manille 2.png" alt="Mangue Manille" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Manille</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Mangue charnue caractérisée par sa douceur et son apport en vitamines A, C et fer.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">Mangue charnue caractérisée par sa douceur et son apport en vitamines A, C et fer.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.32s">
         <div class="cph" style="background:#fffbf0"><img src="img/autolfooogem.png" alt="Mangue Ataulfo" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Ataulfo</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Petite taille, grande résistance après récolte. Fort potentiel d'exportation.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">Petite taille, grande résistance après récolte. Fort potentiel d'exportation.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.38s">
         <div class="cph" style="background:#fffbf0"><img src="img/dernierim.png" alt="Mangue Palmer" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Palmer</h3>
-          <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Récolte précoce, texture douce. Idéale pour toute la famille.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6;margin-bottom:12px">Récolte précoce, texture douce. Idéale pour toute la famille.</p>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.44s;background:linear-gradient(135deg,#1A4A2E,#2D7A50);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center">
@@ -364,79 +360,113 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
       <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7">Par avion, bateau ou camion, vos mangues fraîches vous suivent partout dans le monde.</p>
     </div>
 
-    <!-- CARTE — nouvelle image, traits orange repositionnés -->
+    <!-- ── MODIFICATION 2 : CARTE avec traits précis ── -->
+    <!-- 
+      Analyse de l'image lesmondeee.jpeg (viewBox 1000x600) :
+      - Sénégal (côte ouest Afrique) : x≈515, y≈368
+      - Centre Amérique du Nord/Sud   : x≈205, y≈270
+      - Centre Europe (France/Espagne): x≈548, y≈175
+      - Ghana (Afrique de l'Ouest)    : x≈545, y≈400
+      - Maroc (Nord Afrique)          : x≈528, y≈295
+      - Canada                        : x≈185, y≈170
+    -->
     <div class="rv" style="margin-bottom:32px">
       <div class="world-map-container">
         <div class="map-img-wrap">
-          <!-- Nouvelle image de carte -->
           <img src="img/lesmondeee.jpeg" alt="Carte du monde SUNUMANGO" style="width:100%;height:auto;display:block;border-radius:20px">
           
-          <!-- SVG superposé avec les traits et pins ajustés à la nouvelle image -->
-          <!-- La nouvelle image montre monde coupé en haut, Sénégal ~55% x, 62% y -->
-          <!-- Europe ~68% x, 35% y — Amérique ~28% x, 42% y -->
           <svg viewBox="0 0 1000 600" style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
               <filter id="glowS"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
 
-            <!-- Trait Sénégal → Europe -->
-            <line x1="545" y1="370" x2="680" y2="210" stroke="#F5800A" stroke-width="2" opacity="0.85" stroke-dasharray="12,7"><animate attributeName="stroke-dashoffset" values="0;-76" dur="1.8s" repeatCount="indefinite"/></line>
-            <!-- Trait Sénégal → Amérique Nord -->
-            <line x1="545" y1="370" x2="265" y2="230" stroke="#F5800A" stroke-width="2" opacity="0.85" stroke-dasharray="12,7"><animate attributeName="stroke-dashoffset" values="0;-76" dur="2.6s" repeatCount="indefinite"/></line>
-            <!-- Trait Sénégal → Afrique (Ghana) -->
-            <line x1="545" y1="370" x2="580" y2="430" stroke="#F5800A" stroke-width="1.5" opacity="0.7" stroke-dasharray="8,5"><animate attributeName="stroke-dashoffset" values="0;-52" dur="1.3s" repeatCount="indefinite"/></line>
-            <!-- Trait Europe → Amérique -->
-            <line x1="680" y1="210" x2="265" y2="230" stroke="#F5800A" stroke-width="1" opacity="0.35" stroke-dasharray="7,7"><animate attributeName="stroke-dashoffset" values="0;-56" dur="3.2s" repeatCount="indefinite"/></line>
-            <!-- Trait secondaire vers Maroc -->
-            <line x1="545" y1="370" x2="600" y2="295" stroke="#F5800A" stroke-width="1.2" opacity="0.55" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.1s" repeatCount="indefinite"/></line>
-            <!-- Trait secondaire vers Canada -->
-            <line x1="545" y1="370" x2="230" y2="195" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.9s" repeatCount="indefinite"/></line>
+            <!-- ── Trait Sénégal → Europe (France/Espagne) ── -->
+            <line x1="515" y1="368" x2="548" y2="175" stroke="#F5800A" stroke-width="2.2" opacity="0.90" stroke-dasharray="12,7">
+              <animate attributeName="stroke-dashoffset" values="0;-76" dur="1.8s" repeatCount="indefinite"/>
+            </line>
 
-            <!-- Hub Sénégal -->
-            <circle cx="545" cy="370" r="22" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="22;40;22" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2s" repeatCount="indefinite"/></circle>
-            <circle cx="545" cy="370" r="14" fill="#F5800A" opacity="0.22"/>
-            <circle cx="545" cy="370" r="9" fill="#F5800A" filter="url(#glowS)"/>
-            <circle cx="545" cy="370" r="4" fill="white"/>
-            <rect x="470" y="388" width="150" height="28" rx="7" fill="rgba(0,0,0,0.80)"/>
-            <text x="545" y="406" text-anchor="middle" font-size="12" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">SÉNÉGAL · HUB</text>
+            <!-- ── Trait Sénégal → Amérique (USA/Canada) ── -->
+            <!-- Courbe simulée par deux segments via un point intermédiaire en Atlantique -->
+            <polyline points="515,368 340,310 205,270" fill="none" stroke="#F5800A" stroke-width="2.2" opacity="0.90" stroke-dasharray="12,7">
+              <animate attributeName="stroke-dashoffset" values="0;-76" dur="2.6s" repeatCount="indefinite"/>
+            </polyline>
 
-            <!-- Europe -->
-            <circle cx="680" cy="210" r="14" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="14;28;14" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2.5s" repeatCount="indefinite"/></circle>
-            <circle cx="680" cy="210" r="11" fill="#F5800A" opacity="0.25"/>
-            <circle cx="680" cy="210" r="7" fill="#F5800A" filter="url(#glow)"/>
-            <circle cx="680" cy="210" r="3" fill="white"/>
-            <rect x="605" y="183" width="150" height="24" rx="6" fill="rgba(0,0,0,0.78)"/>
-            <text x="680" y="199" text-anchor="middle" font-size="11" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">EUROPE · 30 PAYS</text>
+            <!-- ── Trait Sénégal → Ghana (Afrique de l'Ouest) ── -->
+            <line x1="515" y1="368" x2="545" y2="402" stroke="#F5800A" stroke-width="1.8" opacity="0.75" stroke-dasharray="8,5">
+              <animate attributeName="stroke-dashoffset" values="0;-52" dur="1.3s" repeatCount="indefinite"/>
+            </line>
 
-            <!-- Amérique -->
-            <circle cx="265" cy="230" r="14" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="14;28;14" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="3s" repeatCount="indefinite"/></circle>
-            <circle cx="265" cy="230" r="11" fill="#F5800A" opacity="0.25"/>
-            <circle cx="265" cy="230" r="7" fill="#F5800A" filter="url(#glow)"/>
-            <circle cx="265" cy="230" r="3" fill="white"/>
-            <rect x="175" y="203" width="180" height="24" rx="6" fill="rgba(0,0,0,0.78)"/>
-            <text x="265" y="219" text-anchor="middle" font-size="11" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">AMÉRIQUE · 2 PAYS</text>
+            <!-- ── Trait Sénégal → Maroc ── -->
+            <line x1="515" y1="368" x2="527" y2="293" stroke="#F5800A" stroke-width="1.5" opacity="0.65" stroke-dasharray="8,6">
+              <animate attributeName="stroke-dashoffset" values="0;-56" dur="2.1s" repeatCount="indefinite"/>
+            </line>
+
+            <!-- ── Trait Sénégal → Canada ── -->
+            <polyline points="515,368 340,290 185,168" fill="none" stroke="#F5800A" stroke-width="1.5" opacity="0.55" stroke-dasharray="8,6">
+              <animate attributeName="stroke-dashoffset" values="0;-56" dur="2.9s" repeatCount="indefinite"/>
+            </polyline>
+
+            <!-- ════════════ HUB SÉNÉGAL ════════════ -->
+            <!-- Position exacte du Sénégal sur la carte -->
+            <circle cx="515" cy="368" r="24" fill="#F5800A" opacity="0.08">
+              <animate attributeName="r" values="24;44;24" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.12;0;0.12" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="515" cy="368" r="15" fill="#F5800A" opacity="0.25"/>
+            <circle cx="515" cy="368" r="10" fill="#F5800A" filter="url(#glowS)"/>
+            <circle cx="515" cy="368" r="4.5" fill="white"/>
+            <rect x="432" y="386" width="168" height="28" rx="7" fill="rgba(0,0,0,0.82)"/>
+            <text x="516" y="404" text-anchor="middle" font-size="12" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">SÉNÉGAL · HUB</text>
+
+            <!-- ════════════ EUROPE ════════════ -->
+            <!-- Centre Europe ~France/Espagne -->
+            <circle cx="548" cy="175" r="15" fill="#F5800A" opacity="0.08">
+              <animate attributeName="r" values="15;30;15" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.12;0;0.12" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="548" cy="175" r="12" fill="#F5800A" opacity="0.28"/>
+            <circle cx="548" cy="175" r="8" fill="#F5800A" filter="url(#glow)"/>
+            <circle cx="548" cy="175" r="3.5" fill="white"/>
+            <rect x="467" y="148" width="162" height="24" rx="6" fill="rgba(0,0,0,0.80)"/>
+            <text x="548" y="164" text-anchor="middle" font-size="11" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">EUROPE · 30 PAYS</text>
+
+            <!-- ════════════ AMÉRIQUE ════════════ -->
+            <!-- Centre Amérique du Nord -->
+            <circle cx="205" cy="270" r="15" fill="#F5800A" opacity="0.08">
+              <animate attributeName="r" values="15;30;15" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.12;0;0.12" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="205" cy="270" r="12" fill="#F5800A" opacity="0.28"/>
+            <circle cx="205" cy="270" r="8" fill="#F5800A" filter="url(#glow)"/>
+            <circle cx="205" cy="270" r="3.5" fill="white"/>
+            <rect x="110" y="243" width="190" height="24" rx="6" fill="rgba(0,0,0,0.80)"/>
+            <text x="205" y="259" text-anchor="middle" font-size="11" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">AMÉRIQUE · 2 PAYS</text>
 
             <!-- Pins secondaires -->
-            <circle cx="600" cy="295" r="6" fill="#F5800A" opacity="0.75"/><circle cx="600" cy="295" r="2.5" fill="white" opacity="0.9"/>
-            <circle cx="580" cy="430" r="6" fill="#4ade80" opacity="0.8"/><circle cx="580" cy="430" r="2.5" fill="white" opacity="0.9"/>
-            <circle cx="230" cy="195" r="6" fill="#F5800A" opacity="0.65"/><circle cx="230" cy="195" r="2.5" fill="white" opacity="0.9"/>
-            <circle cx="710" cy="195" r="6" fill="#F5800A" opacity="0.65"/><circle cx="710" cy="195" r="2.5" fill="white" opacity="0.9"/>
-            <circle cx="660" cy="225" r="6" fill="#F5800A" opacity="0.65"/><circle cx="660" cy="225" r="2.5" fill="white" opacity="0.9"/>
+            <!-- Ghana -->
+            <circle cx="545" cy="402" r="6.5" fill="#4ade80" opacity="0.85"/><circle cx="545" cy="402" r="2.5" fill="white" opacity="0.9"/>
+            <!-- Maroc -->
+            <circle cx="527" cy="293" r="6" fill="#F5800A" opacity="0.75"/><circle cx="527" cy="293" r="2.5" fill="white" opacity="0.9"/>
+            <!-- Canada -->
+            <circle cx="185" cy="168" r="6" fill="#F5800A" opacity="0.65"/><circle cx="185" cy="168" r="2.5" fill="white" opacity="0.9"/>
+            <!-- UK/Allemagne -->
+            <circle cx="558" cy="158" r="6" fill="#F5800A" opacity="0.65"/><circle cx="558" cy="158" r="2.5" fill="white" opacity="0.9"/>
+            <!-- Italie -->
+            <circle cx="568" cy="182" r="6" fill="#F5800A" opacity="0.60"/><circle cx="568" cy="182" r="2.5" fill="white" opacity="0.9"/>
 
             <!-- Légende -->
-            <rect x="18" y="555" width="250" height="32" rx="8" fill="rgba(0,0,0,0.68)"/>
+            <rect x="18" y="555" width="256" height="32" rx="8" fill="rgba(0,0,0,0.70)"/>
             <circle cx="38" cy="571" r="7" fill="#F5800A"/><circle cx="38" cy="571" r="3" fill="white"/>
-            <text x="54" y="576" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="600" font-family="Arial,sans-serif">Hub SUNUMANGO · Sénégal</text>
+            <text x="54" y="576" font-size="12" fill="rgba(255,255,255,0.88)" font-weight="600" font-family="Arial,sans-serif">Hub SUNUMANGO · Sénégal</text>
           </svg>
         </div>
       </div>
     </div>
 
-    <!-- Cards continents — icônes en orange -->
+    <!-- Cards continents -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:16px">
       <div class="dcard rv">
-        <!-- Icône Europe en orange -->
         <div style="font-size:32px;margin-bottom:12px;color:#F5800A">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="#F5800A" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93V19a1 1 0 0 0-1-1H8a2 2 0 0 1-2-2v-1l-3-.857A8.013 8.013 0 0 1 4.07 9H5a2 2 0 0 1 2 2v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.5a.5.5 0 0 0 .5-.5V9a.5.5 0 0 1 .5-.5H14a1 1 0 0 0 .894-.553l.764-1.528A8.01 8.01 0 0 1 19.8 10H19a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v2.93A8.022 8.022 0 0 1 11 19.93z"/>
@@ -457,7 +487,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
       </div>
 
       <div class="dcard rv" style="animation-delay:.1s">
-        <!-- Icône Afrique en orange -->
         <div style="font-size:32px;margin-bottom:12px">
           <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#F5800A">
             <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8 0-.691.088-1.362.243-2.007l2.515 2.514A2.003 2.003 0 0 0 8 14v2a2 2 0 0 0 2 2h1v1.931A7.987 7.987 0 0 1 12 20zm6.393-3.237C17.604 17.545 16 18 14 18h-2v-2H9v-2.586l-4.024-4.024A7.99 7.99 0 0 1 11 4.069V5a1 1 0 0 0 1 1h3l-1 2h2v2h-1l1 1v1h1.5A7.977 7.977 0 0 1 18.393 16.763z"/>
@@ -478,7 +507,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
       </div>
 
       <div class="dcard rv" style="animation-delay:.2s">
-        <!-- Icône Amérique en orange -->
         <div style="font-size:32px;margin-bottom:12px">
           <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#F5800A">
             <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm7.931 9H18a1 1 0 0 0-.707.293L15 13.586l-1.293-1.293a1 1 0 0 0-1.414 0L11 13.586l-.293-.293A1 1 0 0 0 10 13H8.069A7.971 7.971 0 0 1 12 4c2.48 0 4.698 1.135 6.197 2.913L16.414 8.5a1 1 0 0 0 0 1.414l.293.293A.999.999 0 0 0 18 11h1.931zM12 20a7.977 7.977 0 0 1-7.031-4.214l2.524.841a1 1 0 0 0 1.02-.217L10 14.914l1.293 1.293a1 1 0 0 0 1.414 0L14 14.914l1.293 1.293A1 1 0 0 0 16 16.5l2.25-2.25A7.967 7.967 0 0 1 12 20z"/>
@@ -525,7 +553,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
       <div>
         <span style="color:#F5800A;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Qualité certifiée</span>
         <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#1A4A2E;margin-top:10px;letter-spacing:-.5px">Un partenaire fiable<br>&amp; professionnel</h2>
-        <p style="color:#1A4A2E75;font-size:14px;margin-top:14px;line-height:1.7">Enregistrée au système REX sous le numéro <strong style="color:#1A4A2E">SNREX520ASX</strong>, SUNUMANGO garantit la conformité de ses exportations vers l'UE, la Suisse, la Norvège et la Turquie.</p>
+        <p style="color:#1A4A2E;font-size:14px;margin-top:14px;line-height:1.7">Enregistrée au système REX sous le numéro <strong style="color:#1A4A2E">SNREX520ASX</strong>, SUNUMANGO garantit la conformité de ses exportations vers l'UE, la Suisse, la Norvège et la Turquie.</p>
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
           <div class="cert">
             <img src="img/global-g-a-p-logo-png_seeklogo-302518.png" alt="GlobalGAP" class="cert-img" style="background:#f0fdf4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -595,7 +623,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
     <div class="rv" style="text-align:center;margin-bottom:52px">
       <span style="color:#F5800A;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Présence internationale</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#1A4A2E;margin-top:10px;letter-spacing:-.5px">Nos Événements</h2>
-      <p style="color:#1A4A2E75;font-size:14px;margin-top:10px;line-height:1.7">SUNUMANGO présente sur la scène internationale dans les foires et salons agrobusiness</p>
+      <p style="color:#1A4A2E;font-size:14px;margin-top:10px;line-height:1.7">SUNUMANGO présente sur la scène internationale dans les foires et salons agrobusiness</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
 
@@ -619,7 +647,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
             <span style="color:#1A4A2E70;font-size:12px;display:flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Shanghai, Chine</span>
           </div>
           <h3 style="font-size:16px;font-weight:700;color:#1A4A2E;margin-bottom:8px;line-height:1.35">The 6th China International Import Export 2023</h3>
-          <p style="font-size:13px;color:#1A4A2E70;line-height:1.65">SUNUMANGO a participé à la Foire d'Importation de Chine 2023. Rendez-vous international du B2B, lieu d'opportunités de partenariat avec des professionnels de l'industrie alimentaire mondiale.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.65">SUNUMANGO a participé à la Foire d'Importation de Chine 2023. Rendez-vous international du B2B, lieu d'opportunités de partenariat avec des professionnels de l'industrie alimentaire mondiale.</p>
         </div>
       </div>
 
@@ -643,7 +671,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
             <span style="color:#1A4A2E70;font-size:12px;display:flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Berlin, Allemagne</span>
           </div>
           <h3 style="font-size:16px;font-weight:700;color:#1A4A2E;margin-bottom:8px;line-height:1.35">Fruit Logistica 2024 — Messedamm Berlin 22</h3>
-          <p style="font-size:13px;color:#1A4A2E70;line-height:1.65">SUNUMANGO développe son réseau et se propulse vers de nouveaux horizons au sein de cette plateforme internationale incontournable de la filière fruits et légumes.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.65">SUNUMANGO développe son réseau et se propulse vers de nouveaux horizons au sein de cette plateforme internationale incontournable de la filière fruits et légumes.</p>
         </div>
       </div>
 
@@ -668,7 +696,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
             <span style="color:#1A4A2E70;font-size:12px;display:flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Rimini Expo Centre, Italie</span>
           </div>
           <h3 style="font-size:16px;font-weight:700;color:#1A4A2E;margin-bottom:8px;line-height:1.35">Macfrut 2025</h3>
-          <p style="font-size:13px;color:#1A4A2E70;line-height:1.65">Plus de 1 400 exposants dont 40% internationaux. Innovation, durabilité et alimentation saine avec l'Égypte comme pays partenaire et le nouveau format Healthy Food Show.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.65">Plus de 1 400 exposants dont 40% internationaux. Innovation, durabilité et alimentation saine avec l'Égypte comme pays partenaire et le nouveau format Healthy Food Show.</p>
         </div>
       </div>
 
@@ -690,7 +718,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
         <div class="svc-logo"><img src="img/logo-sunumango.png" alt="SUNUMANGO" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'"></div>
         <div style="padding:14px 20px 24px;text-align:center">
           <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">SUNUMANGO</h3>
-          <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Exportation de mangues d'exception du Sénégal vers 36 destinations mondiales. Certifié GlobalGAP.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6">Exportation de mangues d'exception du Sénégal vers 36 destinations mondiales. Certifié GlobalGAP.</p>
         </div>
       </div>
       <div class="svc-card rv" style="animation-delay:.1s">
@@ -698,7 +726,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
         <div class="svc-logo"><img src="img/jettt.jpeg" alt="JETSET" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'"></div>
         <div style="padding:14px 20px 24px;text-align:center">
           <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET IMMOBILIER</h3>
-          <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Solutions immobilières haut de gamme. Acquisition, gestion et valorisation de biens résidentiels et commerciaux.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6">Solutions immobilières haut de gamme. Acquisition, gestion et valorisation de biens résidentiels et commerciaux.</p>
         </div>
       </div>
       <div class="svc-card rv" style="animation-delay:.2s">
@@ -706,7 +734,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
         <div class="svc-logo"><img src="img/jetset222.jpeg" alt="Avion" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.style.display='none'"></div>
         <div style="padding:14px 20px 24px;text-align:center">
           <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET TRAVELS</h3>
-          <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Agence de voyages d'affaires et de loisirs. Organisation de déplacements professionnels et séjours personnalisés.</p>
+          <p style="font-size:13px;color:#1A4A2E;line-height:1.6">Agence de voyages d'affaires et de loisirs. Organisation de déplacements professionnels et séjours personnalisés.</p>
         </div>
       </div>
     </div>
@@ -719,7 +747,7 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
     <div class="rv" style="text-align:center;margin-bottom:48px">
       <span style="color:#F5800A;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Contactez-nous</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#1A4A2E;margin-top:10px;letter-spacing:-.5px">Prêt à passer votre commande ?</h2>
-      <p style="color:#1A4A2E75;font-size:14px;margin-top:12px;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto">Notre équipe vous accompagne du calibre au conditionnement, en passant par la logistique internationale.</p>
+      <p style="color:#1A4A2E;font-size:14px;margin-top:12px;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto">Notre équipe vous accompagne du calibre au conditionnement, en passant par la logistique internationale.</p>
     </div>
     <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
       <a href="tel:+221775236473" class="contact-card">
@@ -747,7 +775,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
   <div style="max-width:1280px;margin:0 auto;padding:0 20px">
     <div id="footer-grid" style="display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:start;margin-bottom:40px">
       
-      <!-- Logo + texte centré -->
       <div style="text-align:center">
         <div style="margin-bottom:12px;display:flex;justify-content:center">
           <img src="img/logo-sunumango.png" alt="SUNUMANGO" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -756,14 +783,12 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
             <span style="font-weight:800;font-size:16px;color:white">SUNU<span style="color:#F5800A">MANGO</span></span>
           </div>
         </div>
-        <!-- Texte centré -->
         <p style="color:rgba(255,255,255,.3);font-size:12px;line-height:1.8;text-align:center">
           Exportateur sénégalais de mangues d'exception<br>
           REX : SNREX520ASX — Certifié GlobalGAP
         </p>
       </div>
 
-      <!-- Nav -->
       <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
         <a href="#varietes" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Variétés</a>
         <a href="#destinations" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Destinations</a>
@@ -772,7 +797,6 @@ nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdr
         <a href="#contact" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Contact</a>
       </div>
 
-      <!-- Réseaux sociaux -->
       <div class="social-footer-col" style="text-align:right">
         <p style="color:rgba(255,255,255,.4);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">Retrouvez-nous sur</p>
         <div class="social-row" style="display:flex;gap:10px;justify-content:flex-end">
@@ -849,7 +873,6 @@ function fixFooter(){
   const fg=document.getElementById('footer-grid');
   if(!fg)return;
   fg.style.gridTemplateColumns=window.innerWidth<768?'1fr':'1fr auto 1fr';
-  // Sur mobile, on centre tout
   if(window.innerWidth<768){
     fg.style.textAlign='center';
     document.querySelectorAll('.social-footer-col').forEach(el=>{el.style.textAlign='center'});
