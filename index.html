@@ -7,120 +7,165 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, Helvetica, sans-serif; background: #FEF6E4; overflow-x: hidden; cursor: none; }
+body { font-family: Arial, Helvetica, sans-serif; background: #FEF6E4; overflow-x: hidden; cursor: none; }
 
-  .cur { width:16px;height:16px;background:#F5800A;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:multiply;transition:transform .15s ease; }
-  .cur-ring { width:36px;height:36px;border:1.5px solid #F5800A;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:all .22s ease;opacity:.5; }
-  .cur-big { transform:scale(2.5)!important; }
-  .ring-sm { transform:scale(0.4)!important; }
+.cur { width:16px;height:16px;background:#F5800A;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:multiply;transition:transform .15s ease; }
+.cur-ring { width:36px;height:36px;border:1.5px solid #F5800A;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:all .22s ease;opacity:.5; }
+.cur-big { transform:scale(2.5)!important; }
+.ring-sm { transform:scale(0.4)!important; }
 
-  nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(212,168,67,.15); }
-  .nlink { color:#1A4A2E;font-size:14px;font-weight:500;text-decoration:none;padding:5px 0;border-bottom:2px solid transparent;transition:all .2s;cursor:none; }
-  .nlink:hover { border-bottom-color:#F5800A;color:#F5800A; }
+nav { background:rgba(254,246,228,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(212,168,67,.15); }
+.nlink { color:#1A4A2E;font-size:14px;font-weight:500;text-decoration:none;padding:5px 0;border-bottom:2px solid transparent;transition:all .2s;cursor:none; }
+.nlink:hover { border-bottom-color:#F5800A;color:#F5800A; }
 
-  /* Burger : caché desktop, visible mobile */
-  #mBtn { display:none; }
-  @media(max-width:1023px) {
-    #mBtn { display:flex!important; }
-    #navDesktop { display:none!important; }
+#mBtn { display:none; }
+@media(max-width:1023px) {
+  #mBtn { display:flex!important; }
+  #navDesktop { display:none!important; }
+}
+@media(min-width:1024px) {
+  #mBtn { display:none!important; }
+  #navDesktop { display:flex!important; }
+}
+
+.hero-bg { background:linear-gradient(135deg,#1A4A2E 0%,#0D2318 55%,#2D7A50 100%);position:relative;overflow:hidden; }
+.hero-bg::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 68% 50%,rgba(245,128,10,.28) 0%,transparent 55%),radial-gradient(ellipse at 18% 75%,rgba(212,168,67,.18) 0%,transparent 45%); }
+.hgrid { position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px; }
+
+@keyframes fA{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-18px) rotate(4deg)}}
+@keyframes fB{0%,100%{transform:translateY(0) rotate(6deg)}50%{transform:translateY(-12px) rotate(-2deg)}}
+@keyframes fC{0%,100%{transform:translateY(-8px) rotate(-1deg)}50%{transform:translateY(8px) rotate(5deg)}}
+.fa{animation:fA 6s ease-in-out infinite}.fb{animation:fB 8s ease-in-out infinite}.fc{animation:fC 7s ease-in-out infinite 1s}
+
+.sbadge { background:rgba(255,255,255,.65);backdrop-filter:blur(10px);border:1px solid rgba(212,168,67,.3);border-radius:14px;padding:12px 18px;text-align:center; }
+
+.mtrack { display:flex;width:max-content;animation:marquee 22s linear infinite; }
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.vcard { background:white;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:transform .35s cubic-bezier(.175,.885,.32,1.275),box-shadow .35s;cursor:none; }
+.vcard:hover { transform:translateY(-10px) scale(1.015);box-shadow:0 24px 56px rgba(26,74,46,.18),0 0 0 2px rgba(245,128,10,.25); }
+.vcard .ci { width:100%;height:200px;object-fit:contain;display:block;background:#fff; }
+.vcard .cph { width:100%;height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden; }
+
+.dcard { background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:28px;transition:all .3s;cursor:none; }
+.dcard:hover { background:rgba(255,255,255,.15);border-color:rgba(245,128,10,.5);transform:translateY(-5px); }
+
+.tcard { background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;text-align:center;transition:all .3s;cursor:none; }
+.tcard:hover { background:rgba(245,128,10,.15);border-color:#F5800A;transform:translateY(-4px); }
+
+.world-map-container { position:relative;width:100%;border-radius:20px;overflow:hidden; }
+
+.svc-card { background:white;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none; }
+.svc-card:hover { transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,74,46,.15); }
+.svc-img { width:100%;height:220px;object-fit:cover;display:block; }
+.svc-logo { width:62px;height:62px;border-radius:50%;background:white;border:3px solid #F5800A;display:flex;align-items:center;justify-content:center;margin:-31px auto 0;position:relative;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.1);overflow:hidden; }
+
+.cert { display:flex;align-items:center;gap:14px;padding:14px;background:white;border-radius:14px;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none; }
+.cert:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateX(4px); }
+.cert-img { width:42px;height:42px;border-radius:10px;object-fit:contain;flex-shrink:0;padding:5px; }
+
+.btn-p { background:linear-gradient(135deg,#F5800A,#C05C00);color:white;padding:13px 30px;border-radius:100px;font-family:Arial,sans-serif;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;position:relative;overflow:hidden;cursor:none;text-decoration:none; }
+.btn-p::after { content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FBBF24,#F5800A);opacity:0;transition:opacity .3s; }
+.btn-p:hover::after { opacity:1; }
+.btn-p > * { position:relative;z-index:1; }
+.btn-p:hover { transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,128,10,.38); }
+.btn-ow { border:1.5px solid rgba(255,255,255,.4);color:white;padding:12px 28px;border-radius:100px;font-family:Arial,sans-serif;font-weight:500;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;cursor:none;text-decoration:none; }
+.btn-ow:hover { background:rgba(255,255,255,.12);transform:translateY(-2px); }
+
+.rv { opacity:0;transform:translateY(30px); }
+.rv.on { animation:rup .65s cubic-bezier(.22,1,.36,1) forwards; }
+@keyframes rup{to{opacity:1;transform:translateY(0)}}
+
+.grid2 { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start; }
+.grid3 { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+.grid-cards { display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px; }
+
+/* MAP — nouveau style sans zoom forcé, centrage image */
+.map-img-wrap {
+  overflow:hidden;
+  border-radius:20px;
+  position:relative;
+  background:#e8e8e8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.map-img-wrap img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:20px;
+}
+.map-img-wrap svg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border-radius:20px;
+}
+
+/* Sur mobile, on garde l'image visible sans zoom excessif */
+@media(max-width:768px){
+  .map-img-wrap img {
+    width:100%;
+    height:auto;
+    object-fit:contain;
   }
-  @media(min-width:1024px) {
-    #mBtn { display:none!important; }
-    #navDesktop { display:flex!important; }
+}
+
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#FEF6E4}::-webkit-scrollbar-thumb{background:#F5800A;border-radius:3px}
+
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse2 2s infinite}
+
+.social-icon { width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:none;transition:all .2s;text-decoration:none; }
+.social-icon:hover { background:#F5800A;border-color:#F5800A;transform:translateY(-2px); }
+
+.ev-card:hover { transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,74,46,.14)!important; }
+.ev-dot { display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s;cursor:none; }
+.ev-dot.on { background:white;width:20px;border-radius:4px; }
+
+/* Contact cards */
+.contact-card { display:flex;align-items:center;gap:14px;padding:16px 18px;background:white;border-radius:16px;border:1px solid rgba(212,168,67,.2);text-decoration:none;transition:all .25s;cursor:none; }
+.contact-card:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateY(-3px); }
+.contact-card .icon-box { width:42px;height:42px;border-radius:10px;background:#fff7f0;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.contact-card .label { font-size:11px;color:#1A4A2E55;font-weight:600;text-transform:uppercase;letter-spacing:.8px; }
+.contact-card .value { font-size:13px;color:#1A4A2E;font-weight:600;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .cert-grid { grid-template-columns:1fr!important; }
+  .grid2 { grid-template-columns:1fr!important;gap:28px; }
+  .grid3 { grid-template-columns:1fr!important;gap:12px; }
+}
+
+@media(min-width:769px){
+  .hero-mango-img {
+    width: 38% !important;
+    border: 5px solid white;
+    border-radius: 16px;
   }
+}
 
-  .hero-bg { background:linear-gradient(135deg,#1A4A2E 0%,#0D2318 55%,#2D7A50 100%);position:relative;overflow:hidden; }
-  .hero-bg::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 68% 50%,rgba(245,128,10,.28) 0%,transparent 55%),radial-gradient(ellipse at 18% 75%,rgba(212,168,67,.18) 0%,transparent 45%); }
-  .hgrid { position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px; }
-
-  @keyframes fA{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-18px) rotate(4deg)}}
-  @keyframes fB{0%,100%{transform:translateY(0) rotate(6deg)}50%{transform:translateY(-12px) rotate(-2deg)}}
-  @keyframes fC{0%,100%{transform:translateY(-8px) rotate(-1deg)}50%{transform:translateY(8px) rotate(5deg)}}
-  .fa{animation:fA 6s ease-in-out infinite}.fb{animation:fB 8s ease-in-out infinite}.fc{animation:fC 7s ease-in-out infinite 1s}
-
-  .sbadge { background:rgba(255,255,255,.65);backdrop-filter:blur(10px);border:1px solid rgba(212,168,67,.3);border-radius:14px;padding:12px 18px;text-align:center; }
-
-  .mtrack { display:flex;width:max-content;animation:marquee 22s linear infinite; }
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  .vcard { background:white;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:transform .35s cubic-bezier(.175,.885,.32,1.275),box-shadow .35s;cursor:none; }
-  .vcard:hover { transform:translateY(-10px) scale(1.015);box-shadow:0 24px 56px rgba(26,74,46,.18),0 0 0 2px rgba(245,128,10,.25); }
-  .vcard .ci { width:100%;height:200px;object-fit:contain;display:block;background:#fff; }
-  .vcard .cph { width:100%;height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden; }
-
-  .dcard { background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:28px;transition:all .3s;cursor:none; }
-  .dcard:hover { background:rgba(255,255,255,.15);border-color:rgba(245,128,10,.5);transform:translateY(-5px); }
-
-  .tcard { background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;text-align:center;transition:all .3s;cursor:none; }
-  .tcard:hover { background:rgba(245,128,10,.15);border-color:#F5800A;transform:translateY(-4px); }
-
-  .world-map-container { position:relative;width:100%;border-radius:20px;overflow:hidden;background:#1a1a1a; }
-
-  /* SERVICE CARDS — plus hautes */
-  .svc-card { background:white;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;cursor:none; }
-  .svc-card:hover { transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,74,46,.15); }
-  .svc-img { width:100%;height:220px;object-fit:cover;display:block; }
-  .svc-logo { width:62px;height:62px;border-radius:50%;background:white;border:3px solid #F5800A;display:flex;align-items:center;justify-content:center;margin:-31px auto 0;position:relative;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.1);overflow:hidden; }
-
-  /* Certifications */
-  .cert { display:flex;align-items:center;gap:14px;padding:14px;background:white;border-radius:14px;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none; }
-  .cert:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateX(4px); }
-  .cert-img { width:42px;height:42px;border-radius:10px;object-fit:contain;flex-shrink:0;padding:5px; }
-
-  .btn-p { background:linear-gradient(135deg,#F5800A,#C05C00);color:white;padding:13px 30px;border-radius:100px;font-family:Arial,sans-serif;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;position:relative;overflow:hidden;cursor:none;text-decoration:none; }
-  .btn-p::after { content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FBBF24,#F5800A);opacity:0;transition:opacity .3s; }
-  .btn-p:hover::after { opacity:1; }
-  .btn-p > * { position:relative;z-index:1; }
-  .btn-p:hover { transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,128,10,.38); }
-  .btn-ow { border:1.5px solid rgba(255,255,255,.4);color:white;padding:12px 28px;border-radius:100px;font-family:Arial,sans-serif;font-weight:500;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;cursor:none;text-decoration:none; }
-  .btn-ow:hover { background:rgba(255,255,255,.12);transform:translateY(-2px); }
-
-  .rv { opacity:0;transform:translateY(30px); }
-  .rv.on { animation:rup .65s cubic-bezier(.22,1,.36,1) forwards; }
-  @keyframes rup{to{opacity:1;transform:translateY(0)}}
-
-  .grid2 { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start; }
-  .grid3 { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
-  .grid-cards { display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px; }
-
-  @media(max-width:768px) {
-    .grid2{grid-template-columns:1fr;gap:32px}
-    .grid3{grid-template-columns:1fr;gap:12px}
-    .hero-stat-d{display:none!important}
-    .hero-stat-m{display:flex!important}
-    /* Social centré mobile */
-    .social-footer-col { text-align:center!important; }
-    .social-footer-col p { text-align:center!important; }
-    .social-footer-col .social-row { justify-content:center!important; }
-    /* Carte mobile — zoom sur zone Sénégal/Europe */
-    .map-img-wrap { overflow:hidden;border-radius:20px; }
-    .map-img-wrap img { transform:scale(2.2);transform-origin:58% 38%;width:100%;height:auto;display:block; }
-    .map-img-wrap svg { transform:scale(2.2);transform-origin:58% 38%; }
+@media(max-width:768px){
+  .hero-mango-img {
+    width: 55% !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    pointer-events: none;
+    display: block;
+    margin: 20px auto 0;
+    border: 5px solid white;
+    border-radius: 16px;
+    filter: drop-shadow(0 10px 20px rgba(26,74,46,.3)) !important;
   }
-  @media(max-width:900px){
-    .cert-grid{grid-template-columns:1fr!important}
-  }
-
-  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#FEF6E4}::-webkit-scrollbar-thumb{background:#F5800A;border-radius:3px}
-
-  @keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
-  .pulse{animation:pulse2 2s infinite}
-
-  .social-icon { width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:none;transition:all .2s;text-decoration:none; }
-  .social-icon:hover { background:#F5800A;border-color:#F5800A;transform:translateY(-2px); }
-
-  .ev-card:hover { transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,74,46,.14)!important; }
-  .ev-dot { display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s;cursor:none; }
-  .ev-dot.on { background:white;width:20px;border-radius:4px; }
-
-  /* Contact cards — email ne déborde plus */
-  .contact-card { display:flex;align-items:center;gap:14px;text-decoration:none;padding:18px;border-radius:16px;background:white;border:1px solid rgba(212,168,67,.2);transition:all .25s;cursor:none;min-width:0; }
-  .contact-card:hover { border-color:#F5800A;box-shadow:0 8px 24px rgba(245,128,10,.1);transform:translateY(-3px); }
-  .contact-card .icon-box { width:44px;height:44px;border-radius:12px;background:#fff7ed;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
-  .contact-card .label { font-size:11px;color:#1A4A2E55;margin-bottom:2px; }
-  .contact-card .value { font-size:13px;font-weight:600;color:#1A4A2E;word-break:break-all;overflow-wrap:anywhere; }
+  .social-footer-col { text-align:center!important; }
+  .social-row { justify-content:center!important; }
+}
 </style>
 </head>
 <body>
@@ -168,43 +213,38 @@
   <div class="hgrid"></div>
   <div style="max-width:1280px;margin:0 auto;padding:60px 20px;width:100%;position:relative;z-index:1">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center" class="rv" id="hero-grid-inner">
+      
+      <!-- COLONNE GAUCHE -->
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fde68a;padding:6px 16px;border-radius:100px;font-size:12px;margin-bottom:24px;backdrop-filter:blur(6px)">
           <span class="pulse" style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block"></span>
           Certifié GlobalGAP &nbsp;·&nbsp; REX SNREX520ASX
         </div>
         <h1 style="font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;color:white;line-height:1.1;margin-bottom:18px;letter-spacing:-1px">
-          La Mangue<br><span style="color:#F5800A">d'Exception</span><br>
-          <span style="font-style:italic;font-weight:400;font-size:.82em;opacity:.85">du Sénégal</span>
+          Importer<br><span style="color:#F5800A">les meilleures mangues</span><br>
+          <span style="font-style:italic;font-weight:400;font-size:.82em;opacity:.85">au monde</span>
         </h1>
         <p style="color:rgba(255,255,255,.65);font-size:15px;line-height:1.7;max-width:400px;margin-bottom:28px">
-          Fondantes, juteuses et d'une qualité gustative incomparable — des vergers sénégalais aux marchés de 3 continents.
+          Depuis les vergers de la zone des Niayes jusqu'aux 3 continents
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <a href="https://wa.me/221776616619" target="_blank" class="btn-p">
+          <!-- WhatsApp avec message pré-rempli -->
+          <a href="https://wa.me/221776616619?text=Bonjour%20SUNUMANGO%2C%20je%20souhaite%20passer%20une%20commande%20de%20mangues.%20Pouvez-vous%20me%20communiquer%20vos%20disponibilit%C3%A9s%2C%20vari%C3%A9t%C3%A9s%20et%20tarifs%20%3F%20Merci." target="_blank" class="btn-p">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Passer une commande
           </a>
           <a href="#varietes" class="btn-ow">Nos variétés</a>
         </div>
       </div>
+
+      <!-- COLONNE DROITE — image unique -->
       <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:300px">
-        <div class="fa" style="position:absolute;top:0;left:50%;transform:translateX(-50%)">
-          <div style="width:130px;height:130px;border-radius:50%;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35);border:3px solid rgba(255,255,255,.2)">
-            <img src="img/kent (2).png" alt="Mangue" style="width:100%;height:100%;object-fit:contain;background:#fff8ee">
-          </div>
-        </div>
-        <div class="fb" style="position:absolute;top:80px;right:20px">
-          <div style="width:88px;height:88px;border-radius:50%;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.2)">
-            <img src="img/keitt (2).png" alt="Keitt" style="width:100%;height:100%;object-fit:contain;background:#fff8ee">
-          </div>
-        </div>
-        <div class="fc" style="position:absolute;bottom:10px;left:20px">
-          <div style="width:78px;height:78px;border-radius:50%;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.2)">
-            <img src="img/zillgem.png" alt="Zill" style="width:100%;height:100%;object-fit:contain;background:#fff8ee">
-          </div>
-        </div>
-        <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(245,128,10,.18) 0%,transparent 70%)"></div>
+        <img
+          src="img/mangueimage.jpg"
+          alt="Mangue Kent"
+          class="hero-mango-img"
+          style="position:relative;z-index:2;width:38%;filter:drop-shadow(0 20px 40px rgba(26,74,46,.4));"
+        >
         <div class="hero-stat-d" style="position:absolute;left:-20px;top:10px">
           <div class="sbadge"><div style="font-size:26px;font-weight:800;color:#1A4A2E;line-height:1">36</div><div style="font-size:11px;color:#1A4A2E80;margin-top:3px">Destinations</div></div>
         </div>
@@ -216,12 +256,15 @@
         </div>
       </div>
     </div>
+
+    <!-- Stats mobiles -->
     <div class="hero-stat-m" style="display:none;gap:10px;margin-top:32px;flex-wrap:wrap;justify-content:center">
       <div class="sbadge" style="flex:1;min-width:80px"><div style="font-size:22px;font-weight:800;color:#1A4A2E">36</div><div style="font-size:11px;color:#1A4A2E70">Destinations</div></div>
       <div class="sbadge" style="flex:1;min-width:80px"><div style="font-size:22px;font-weight:800;color:#F5800A">5+</div><div style="font-size:11px;color:#1A4A2E70">Variétés</div></div>
       <div class="sbadge" style="flex:1;min-width:80px"><div style="font-size:22px;font-weight:800;color:#1A4A2E">3</div><div style="font-size:11px;color:#1A4A2E70">Continents</div></div>
     </div>
   </div>
+
   <div style="position:absolute;bottom:0;left:0;right:0;line-height:0">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 65" preserveAspectRatio="none" style="width:100%;height:65px;display:block"><path d="M0,32 C400,65 1040,0 1440,32 L1440,65 L0,65 Z" fill="#FEF6E4"/></svg>
   </div>
@@ -249,17 +292,10 @@
     </div>
     <div class="grid-cards">
       <div class="vcard rv">
-        <div class="cph" style="background:#fffbf0">
-          <img src="img/kent (2).png" alt="Mangue Kent" class="ci">
-          <span style="position:absolute;top:10px;right:10px;background:#F5800A;color:white;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600">Premium</span>
-        </div>
+        <div class="cph" style="background:#fffbf0"><img src="img/kent (2).png" alt="Mangue Kent" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Kent</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Gros fruit ovoïde, coloration rouge pourpre, chair jaune orangée fondante, juteuse et sans fibres. Excellente qualité gustative et bonne résistance au transport maritime.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px">
-            <span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">🚢 Maritime</span>
-            <span style="font-size:11px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;padding:3px 10px;border-radius:20px">Grande distrib.</span>
-          </div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.08s">
@@ -267,24 +303,13 @@
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Keitt</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Variété tardive, forme ovale, coloration rouge rosé, chair jaune ferme sans fibre. Particulièrement adaptée au transport maritime.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px">
-            <span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">🚢 Maritime</span>
-            <span style="font-size:11px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;padding:3px 10px;border-radius:20px">Tardive</span>
-          </div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.14s">
-        <div class="cph" style="background:#fffbf0">
-          <img src="img/tomyy.png" alt="Tommy Atkins" class="ci">
-          <span style="position:absolute;top:10px;right:10px;background:#1A4A2E;color:white;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600">Best-seller</span>
-        </div>
+        <div class="cph" style="background:#fffbf0"><img src="img/tomyy.png" alt="Tommy Atkins" class="ci"></div>
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Tommy Atkins</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">La variété la plus vendue à l'export. Coloration rouge vif, bonne résistance maritime, destinée à la grande distribution nord-européenne.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px">
-            <span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">🚢 Maritime</span>
-            <span style="font-size:11px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;padding:3px 10px;border-radius:20px">Grande distrib.</span>
-          </div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.2s">
@@ -292,10 +317,6 @@
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Zill</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Variété précoce, petit calibre, coloration rouge carmin. Chair abricot tendre, juteuse et parfumée. Adaptée aux expéditions avion.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px">
-            <span style="font-size:11px;background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;padding:3px 10px;border-radius:20px">✈️ Avion</span>
-            <span style="font-size:11px;background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff;padding:3px 10px;border-radius:20px">Précoce</span>
-          </div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.26s">
@@ -303,7 +324,6 @@
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Manille</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Mangue charnue caractérisée par sa douceur et son apport en vitamines A, C et fer.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="font-size:11px;background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff;padding:3px 10px;border-radius:20px">Précoce</span></div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.32s">
@@ -311,7 +331,6 @@
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Ataulfo</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Petite taille, grande résistance après récolte. Fort potentiel d'exportation.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="font-size:11px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:3px 10px;border-radius:20px">Export</span></div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.38s">
@@ -319,7 +338,6 @@
         <div style="padding:18px">
           <h3 style="font-size:17px;font-weight:700;color:#1A4A2E;margin-bottom:6px">Palmer</h3>
           <p style="font-size:13px;color:#1A4A2E75;line-height:1.6;margin-bottom:12px">Récolte précoce, texture douce. Idéale pour toute la famille.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="font-size:11px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;padding:3px 10px;border-radius:20px">Riche en vitamines</span></div>
         </div>
       </div>
       <div class="vcard rv" style="animation-delay:.44s;background:linear-gradient(135deg,#1A4A2E,#2D7A50);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center">
@@ -328,7 +346,7 @@
         </div>
         <h3 style="font-size:16px;font-weight:700;color:white;margin-bottom:8px">Commande personnalisée</h3>
         <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:18px;line-height:1.6">Calibre et conditionnement sur mesure.</p>
-        <a href="https://wa.me/221776616619" target="_blank" class="btn-p" style="font-size:13px">
+        <a href="https://wa.me/221776616619?text=Bonjour%20SUNUMANGO%2C%20je%20souhaite%20passer%20une%20commande%20de%20mangues.%20Pouvez-vous%20me%20communiquer%20vos%20disponibilit%C3%A9s%2C%20vari%C3%A9t%C3%A9s%20et%20tarifs%20%3F%20Merci." target="_blank" class="btn-p" style="font-size:13px">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           Commander
         </a>
@@ -343,71 +361,87 @@
     <div class="rv" style="text-align:center;margin-bottom:50px">
       <span style="color:#fde68a;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Livraison mondiale</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:white;margin-top:10px;letter-spacing:-.5px">36 Destinations</h2>
-      <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7">Par avion, bateau ou camion — vos mangues fraîches partout dans le monde.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7">Par avion, bateau ou camion, vos mangues fraîches vous suivent partout dans le monde.</p>
     </div>
 
-    <!-- CARTE — zoom sur mobile -->
+    <!-- CARTE — nouvelle image, traits orange repositionnés -->
     <div class="rv" style="margin-bottom:32px">
       <div class="world-map-container">
-        <!-- wrapper avec overflow:hidden pour le zoom mobile -->
-        <div class="map-img-wrap" style="position:relative;border-radius:20px;overflow:hidden;background:#111">
-          <img src="img/carte.png" alt="Carte du monde SUNUMANGO" style="width:100%;height:auto;display:block;border-radius:20px">
-          <svg viewBox="0 0 1344 768" style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px" xmlns="http://www.w3.org/2000/svg">
+        <div class="map-img-wrap">
+          <!-- Nouvelle image de carte -->
+          <img src="img/lesmondeee.jpeg" alt="Carte du monde SUNUMANGO" style="width:100%;height:auto;display:block;border-radius:20px">
+          
+          <!-- SVG superposé avec les traits et pins ajustés à la nouvelle image -->
+          <!-- La nouvelle image montre monde coupé en haut, Sénégal ~55% x, 62% y -->
+          <!-- Europe ~68% x, 35% y — Amérique ~28% x, 42% y -->
+          <svg viewBox="0 0 1000 600" style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
               <filter id="glowS"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
-            <line x1="616" y1="328" x2="684" y2="201" stroke="#F5800A" stroke-width="1.5" opacity="0.7" stroke-dasharray="10,6"><animate attributeName="stroke-dashoffset" values="0;-64" dur="1.8s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="676" y2="191" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.1s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="723" y2="188" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.4s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="664" y2="233" stroke="#F5800A" stroke-width="1.2" opacity="0.55" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="1.6s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="652" y2="265" stroke="#F5800A" stroke-width="1.5" opacity="0.6" stroke-dasharray="8,5"><animate attributeName="stroke-dashoffset" values="0;-52" dur="1.4s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="421" y2="232" stroke="#F5800A" stroke-width="1.5" opacity="0.7" stroke-dasharray="10,6"><animate attributeName="stroke-dashoffset" values="0;-64" dur="2.6s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="402" y2="220" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.9s" repeatCount="indefinite"/></line>
-            <line x1="616" y1="328" x2="676" y2="362" stroke="#F5800A" stroke-width="1.5" opacity="0.65" stroke-dasharray="8,5"><animate attributeName="stroke-dashoffset" values="0;-52" dur="1.3s" repeatCount="indefinite"/></line>
-            <line x1="684" y1="201" x2="421" y2="232" stroke="#F5800A" stroke-width="1" opacity="0.35" stroke-dasharray="7,7"><animate attributeName="stroke-dashoffset" values="0;-56" dur="3.2s" repeatCount="indefinite"/></line>
-            <line x1="421" y1="232" x2="402" y2="220" stroke="#F5800A" stroke-width="1" opacity="0.4" stroke-dasharray="6,5"><animate attributeName="stroke-dashoffset" values="0;-44" dur="1.5s" repeatCount="indefinite"/></line>
+
+            <!-- Trait Sénégal → Europe -->
+            <line x1="545" y1="370" x2="680" y2="210" stroke="#F5800A" stroke-width="2" opacity="0.85" stroke-dasharray="12,7"><animate attributeName="stroke-dashoffset" values="0;-76" dur="1.8s" repeatCount="indefinite"/></line>
+            <!-- Trait Sénégal → Amérique Nord -->
+            <line x1="545" y1="370" x2="265" y2="230" stroke="#F5800A" stroke-width="2" opacity="0.85" stroke-dasharray="12,7"><animate attributeName="stroke-dashoffset" values="0;-76" dur="2.6s" repeatCount="indefinite"/></line>
+            <!-- Trait Sénégal → Afrique (Ghana) -->
+            <line x1="545" y1="370" x2="580" y2="430" stroke="#F5800A" stroke-width="1.5" opacity="0.7" stroke-dasharray="8,5"><animate attributeName="stroke-dashoffset" values="0;-52" dur="1.3s" repeatCount="indefinite"/></line>
+            <!-- Trait Europe → Amérique -->
+            <line x1="680" y1="210" x2="265" y2="230" stroke="#F5800A" stroke-width="1" opacity="0.35" stroke-dasharray="7,7"><animate attributeName="stroke-dashoffset" values="0;-56" dur="3.2s" repeatCount="indefinite"/></line>
+            <!-- Trait secondaire vers Maroc -->
+            <line x1="545" y1="370" x2="600" y2="295" stroke="#F5800A" stroke-width="1.2" opacity="0.55" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.1s" repeatCount="indefinite"/></line>
+            <!-- Trait secondaire vers Canada -->
+            <line x1="545" y1="370" x2="230" y2="195" stroke="#F5800A" stroke-width="1.2" opacity="0.5" stroke-dasharray="8,6"><animate attributeName="stroke-dashoffset" values="0;-56" dur="2.9s" repeatCount="indefinite"/></line>
+
             <!-- Hub Sénégal -->
-            <circle cx="616" cy="328" r="18" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="18;35;18" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2s" repeatCount="indefinite"/></circle>
-            <circle cx="616" cy="328" r="14" fill="#F5800A" opacity="0.2"/>
-            <circle cx="616" cy="328" r="8" fill="#F5800A" filter="url(#glowS)"/>
-            <circle cx="616" cy="328" r="3.5" fill="white"/>
-            <rect x="554" y="345" width="125" height="26" rx="6" fill="rgba(0,0,0,0.78)"/>
-            <text x="616" y="362" text-anchor="middle" font-size="11.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">SÉNÉGAL · HUB</text>
+            <circle cx="545" cy="370" r="22" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="22;40;22" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2s" repeatCount="indefinite"/></circle>
+            <circle cx="545" cy="370" r="14" fill="#F5800A" opacity="0.22"/>
+            <circle cx="545" cy="370" r="9" fill="#F5800A" filter="url(#glowS)"/>
+            <circle cx="545" cy="370" r="4" fill="white"/>
+            <rect x="470" y="388" width="150" height="28" rx="7" fill="rgba(0,0,0,0.80)"/>
+            <text x="545" y="406" text-anchor="middle" font-size="12" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">SÉNÉGAL · HUB</text>
+
             <!-- Europe -->
-            <circle cx="684" cy="201" r="11" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="11;24;11" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2.5s" repeatCount="indefinite"/></circle>
-            <circle cx="684" cy="201" r="10" fill="#F5800A" opacity="0.25"/>
-            <circle cx="684" cy="201" r="6" fill="#F5800A" filter="url(#glow)"/>
-            <circle cx="684" cy="201" r="2.5" fill="white"/>
-            <rect x="618" y="176" width="132" height="22" rx="5" fill="rgba(0,0,0,0.75)"/>
-            <text x="684" y="191" text-anchor="middle" font-size="10.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">EUROPE · 30 PAYS</text>
+            <circle cx="680" cy="210" r="14" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="14;28;14" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="2.5s" repeatCount="indefinite"/></circle>
+            <circle cx="680" cy="210" r="11" fill="#F5800A" opacity="0.25"/>
+            <circle cx="680" cy="210" r="7" fill="#F5800A" filter="url(#glow)"/>
+            <circle cx="680" cy="210" r="3" fill="white"/>
+            <rect x="605" y="183" width="150" height="24" rx="6" fill="rgba(0,0,0,0.78)"/>
+            <text x="680" y="199" text-anchor="middle" font-size="11" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">EUROPE · 30 PAYS</text>
+
             <!-- Amérique -->
-            <circle cx="421" cy="232" r="11" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="11;24;11" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="3s" repeatCount="indefinite"/></circle>
-            <circle cx="421" cy="232" r="10" fill="#F5800A" opacity="0.25"/>
-            <circle cx="421" cy="232" r="6" fill="#F5800A" filter="url(#glow)"/>
-            <circle cx="421" cy="232" r="2.5" fill="white"/>
-            <rect x="348" y="207" width="148" height="22" rx="5" fill="rgba(0,0,0,0.75)"/>
-            <text x="422" y="222" text-anchor="middle" font-size="10.5" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">AMÉRIQUE · 2 PAYS</text>
+            <circle cx="265" cy="230" r="14" fill="#F5800A" opacity="0.08"><animate attributeName="r" values="14;28;14" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0;0.12" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="265" cy="230" r="11" fill="#F5800A" opacity="0.25"/>
+            <circle cx="265" cy="230" r="7" fill="#F5800A" filter="url(#glow)"/>
+            <circle cx="265" cy="230" r="3" fill="white"/>
+            <rect x="175" y="203" width="180" height="24" rx="6" fill="rgba(0,0,0,0.78)"/>
+            <text x="265" y="219" text-anchor="middle" font-size="11" fill="#fde68a" font-weight="700" font-family="Arial,sans-serif">AMÉRIQUE · 2 PAYS</text>
+
             <!-- Pins secondaires -->
-            <circle cx="402" cy="220" r="5" fill="#F5800A" opacity="0.7"/><circle cx="402" cy="220" r="2" fill="white" opacity="0.9"/>
-            <circle cx="652" cy="265" r="5" fill="#F5800A" opacity="0.7"/><circle cx="652" cy="265" r="2" fill="white" opacity="0.9"/>
-            <circle cx="676" cy="191" r="5" fill="#F5800A" opacity="0.65"/><circle cx="676" cy="191" r="2" fill="white" opacity="0.9"/>
-            <circle cx="723" cy="188" r="5" fill="#F5800A" opacity="0.65"/><circle cx="723" cy="188" r="2" fill="white" opacity="0.9"/>
-            <circle cx="664" cy="233" r="5" fill="#F5800A" opacity="0.65"/><circle cx="664" cy="233" r="2" fill="white" opacity="0.9"/>
-            <circle cx="676" cy="362" r="6" fill="#4ade80" opacity="0.8"/><circle cx="676" cy="362" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="600" cy="295" r="6" fill="#F5800A" opacity="0.75"/><circle cx="600" cy="295" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="580" cy="430" r="6" fill="#4ade80" opacity="0.8"/><circle cx="580" cy="430" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="230" cy="195" r="6" fill="#F5800A" opacity="0.65"/><circle cx="230" cy="195" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="710" cy="195" r="6" fill="#F5800A" opacity="0.65"/><circle cx="710" cy="195" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="660" cy="225" r="6" fill="#F5800A" opacity="0.65"/><circle cx="660" cy="225" r="2.5" fill="white" opacity="0.9"/>
+
             <!-- Légende -->
-            <rect x="18" y="724" width="230" height="30" rx="7" fill="rgba(0,0,0,0.65)"/>
-            <circle cx="36" cy="739" r="6" fill="#F5800A"/><circle cx="36" cy="739" r="2.5" fill="white"/>
-            <text x="50" y="744" font-size="11.5" fill="rgba(255,255,255,0.8)" font-weight="600" font-family="Arial,sans-serif">Hub SUNUMANGO · Sénégal</text>
+            <rect x="18" y="555" width="250" height="32" rx="8" fill="rgba(0,0,0,0.68)"/>
+            <circle cx="38" cy="571" r="7" fill="#F5800A"/><circle cx="38" cy="571" r="3" fill="white"/>
+            <text x="54" y="576" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="600" font-family="Arial,sans-serif">Hub SUNUMANGO · Sénégal</text>
           </svg>
         </div>
       </div>
     </div>
 
-    <!-- Cards continents -->
+    <!-- Cards continents — icônes en orange -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:16px">
       <div class="dcard rv">
-        <div style="font-size:32px;margin-bottom:12px">🇪🇺</div>
+        <!-- Icône Europe en orange -->
+        <div style="font-size:32px;margin-bottom:12px;color:#F5800A">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="#F5800A" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93V19a1 1 0 0 0-1-1H8a2 2 0 0 1-2-2v-1l-3-.857A8.013 8.013 0 0 1 4.07 9H5a2 2 0 0 1 2 2v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.5a.5.5 0 0 0 .5-.5V9a.5.5 0 0 1 .5-.5H14a1 1 0 0 0 .894-.553l.764-1.528A8.01 8.01 0 0 1 19.8 10H19a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-1a1 1 0 0 0-1 1v2.93A8.022 8.022 0 0 1 11 19.93z"/>
+          </svg>
+        </div>
         <h3 style="font-size:19px;font-weight:700;color:white;margin-bottom:3px">Europe</h3>
         <div style="color:#fde68a;font-size:11px;font-weight:700;margin-bottom:16px;letter-spacing:1px">30 PAYS</div>
         <div style="display:flex;flex-direction:column;gap:7px;color:rgba(255,255,255,.65);font-size:13px">
@@ -421,8 +455,14 @@
           <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Camion</span>
         </div>
       </div>
+
       <div class="dcard rv" style="animation-delay:.1s">
-        <div style="font-size:32px;margin-bottom:12px">🌍</div>
+        <!-- Icône Afrique en orange -->
+        <div style="font-size:32px;margin-bottom:12px">
+          <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#F5800A">
+            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8 0-.691.088-1.362.243-2.007l2.515 2.514A2.003 2.003 0 0 0 8 14v2a2 2 0 0 0 2 2h1v1.931A7.987 7.987 0 0 1 12 20zm6.393-3.237C17.604 17.545 16 18 14 18h-2v-2H9v-2.586l-4.024-4.024A7.99 7.99 0 0 1 11 4.069V5a1 1 0 0 0 1 1h3l-1 2h2v2h-1l1 1v1h1.5A7.977 7.977 0 0 1 18.393 16.763z"/>
+          </svg>
+        </div>
         <h3 style="font-size:19px;font-weight:700;color:white;margin-bottom:3px">Afrique</h3>
         <div style="color:#fde68a;font-size:11px;font-weight:700;margin-bottom:16px;letter-spacing:1px">4 PAYS</div>
         <div style="display:flex;flex-direction:column;gap:7px;color:rgba(255,255,255,.65);font-size:13px">
@@ -436,8 +476,14 @@
           <span style="font-size:11px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Camion</span>
         </div>
       </div>
+
       <div class="dcard rv" style="animation-delay:.2s">
-        <div style="font-size:32px;margin-bottom:12px">🌎</div>
+        <!-- Icône Amérique en orange -->
+        <div style="font-size:32px;margin-bottom:12px">
+          <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#F5800A">
+            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm7.931 9H18a1 1 0 0 0-.707.293L15 13.586l-1.293-1.293a1 1 0 0 0-1.414 0L11 13.586l-.293-.293A1 1 0 0 0 10 13H8.069A7.971 7.971 0 0 1 12 4c2.48 0 4.698 1.135 6.197 2.913L16.414 8.5a1 1 0 0 0 0 1.414l.293.293A.999.999 0 0 0 18 11h1.931zM12 20a7.977 7.977 0 0 1-7.031-4.214l2.524.841a1 1 0 0 0 1.02-.217L10 14.914l1.293 1.293a1 1 0 0 0 1.414 0L14 14.914l1.293 1.293A1 1 0 0 0 16 16.5l2.25-2.25A7.967 7.967 0 0 1 12 20z"/>
+          </svg>
+        </div>
         <h3 style="font-size:19px;font-weight:700;color:white;margin-bottom:3px">Amérique</h3>
         <div style="color:#fde68a;font-size:11px;font-weight:700;margin-bottom:16px;letter-spacing:1px">2 PAYS</div>
         <div style="display:flex;flex-direction:column;gap:7px;color:rgba(255,255,255,.65);font-size:13px">
@@ -484,17 +530,21 @@
           <div class="cert">
             <img src="img/global-g-a-p-logo-png_seeklogo-302518.png" alt="GlobalGAP" class="cert-img" style="background:#f0fdf4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:42px;height:42px;border-radius:10px;background:#f0fdf4;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">Certification GlobalGAP</div><div style="font-size:12px;color:#1A4A2E55;margin-top:1px">Bonnes pratiques agricoles</div></div>
+            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">Certification GlobalGAP</div></div>
           </div>
           <div class="cert">
             <img src="img/co.png" alt="DPV" class="cert-img" style="background:#eff6ff" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:42px;height:42px;border-radius:10px;background:#eff6ff;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">DPV — Protection des Végétaux</div><div style="font-size:12px;color:#1A4A2E55;margin-top:1px">Phytosanitaire et certificats d'origine</div></div>
+            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">⁠Certificat d'Origine</div></div>
           </div>
           <div class="cert">
-            <img src="img/rex.png" alt="ASEPEX" class="cert-img" style="background:#fffbeb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<h2> (DPV)</h2>            <div style="display:none;width:42px;height:42px;border-radius:10px;background:#eff6ff;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">⁠Certificat Phytosanitaire</div></div>
+          </div>
+          <div class="cert">
+            <img src="img/rex.png" alt="REX" class="cert-img" style="background:#fffbeb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:42px;height:42px;border-radius:10px;background:#fffbeb;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">ASEPEX — Partenaire officiel</div><div style="font-size:12px;color:#1A4A2E55;margin-top:1px">Agence de promotion des exportations</div></div>
+            <div><div style="font-size:13px;font-weight:600;color:#1A4A2E">REX</div></div>
           </div>
         </div>
       </div>
@@ -523,15 +573,15 @@
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/UNCCIAD .jpg.jpeg" alt="UNCCIAD" style="max-height:40px;max-width:140px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span></div>
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/chambre de commerc.jpeg" alt="Chambre de Commerce" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Chambre Commerce</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/UNCCIAD .jpg.jpeg" alt="UNCCIAD" style="max-height:40px;max-width:140px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:20px;padding-right:20px;flex-shrink:0" aria-hidden="true">
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span></div>
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/asepex.png" alt="ASEPEX" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">ASEPEX</span></div>
-        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/WhatsApp Image 2026-02-23 at 11.35.39.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/chambre de commerc.jpeg" alt="Chambre de Commerce" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Chambre Commerce</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/dpv.jpeg" alt="Air Sénégal" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">Air Sénégal</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/UNCCIAD .jpg.jpeg" alt="UNCCIAD" style="max-height:40px;max-width:140px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">UNCCIAD</span></div>
         <div style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 20px;height:64px;min-width:140px;border:1px solid rgba(255,255,255,.3)"><img src="img/DD39EAEE-8FCC-424D-980E-EF59218D63F5.JPG.jpeg" alt="CMA CGM" style="max-height:40px;max-width:110px;width:auto;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;color:#1A4A2E;font-size:13px;font-weight:700">CMA CGM</span></div>
       </div>
@@ -545,7 +595,7 @@
     <div class="rv" style="text-align:center;margin-bottom:52px">
       <span style="color:#F5800A;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Présence internationale</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#1A4A2E;margin-top:10px;letter-spacing:-.5px">Nos Événements</h2>
-      <p style="color:#1A4A2E75;font-size:14px;margin-top:10px;line-height:1.7">SUNUMANGO sur la scène internationale des salons agroalimentaires.</p>
+      <p style="color:#1A4A2E75;font-size:14px;margin-top:10px;line-height:1.7">SUNUMANGO présente sur la scène internationale dans les foires et salons agrobusiness</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
 
@@ -632,52 +682,33 @@
     <div class="rv" style="text-align:center;margin-bottom:50px">
       <span style="color:#fde68a;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">Notre groupe</span>
       <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:white;margin-top:10px;letter-spacing:-.5px">Tous Nos Services</h2>
-      <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7">Le Groupe JETSET accompagne ses clients sur trois domaines d'excellence.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:10px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7">JETSET Groupe propose aussi des services d'assistance et vente de billets et produits immobiliers</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
-
       <div class="svc-card rv">
-        <div style="position:relative;overflow:hidden">
-          <img src="img/maaangggue-e.jpeg" alt="SUNUMANGO Export" class="svc-img">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div>
-        </div>
-        <div class="svc-logo">
-          <img src="img/logo-sunumango.png" alt="SUNUMANGO" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'">
-        </div>
+        <div style="position:relative;overflow:hidden"><img src="img/maaangggue-e.jpeg" alt="SUNUMANGO Export" class="svc-img"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div></div>
+        <div class="svc-logo"><img src="img/logo-sunumango.png" alt="SUNUMANGO" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'"></div>
         <div style="padding:14px 20px 24px;text-align:center">
           <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">SUNUMANGO</h3>
           <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Exportation de mangues d'exception du Sénégal vers 36 destinations mondiales. Certifié GlobalGAP.</p>
         </div>
       </div>
-
       <div class="svc-card rv" style="animation-delay:.1s">
-        <div style="position:relative;overflow:hidden">
-          <img src="img/immobilierrrrree.jpeg" alt="JETSET IMMOBILIER" class="svc-img">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div>
-        </div>
-        <div class="svc-logo">
-          <img src="img/jettt.jpeg" alt="JETSET" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'">
-        </div>
+        <div style="position:relative;overflow:hidden"><img src="img/immobilierrrrree.jpeg" alt="JETSET IMMOBILIER" class="svc-img"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div></div>
+        <div class="svc-logo"><img src="img/jettt.jpeg" alt="JETSET" style="width:100%;height:100%;object-fit:contain;padding:6px" onerror="this.style.display='none'"></div>
         <div style="padding:14px 20px 24px;text-align:center">
           <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET IMMOBILIER</h3>
           <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Solutions immobilières haut de gamme. Acquisition, gestion et valorisation de biens résidentiels et commerciaux.</p>
         </div>
       </div>
-
       <div class="svc-card rv" style="animation-delay:.2s">
-        <div style="position:relative;overflow:hidden">
-          <img src="img/jetsettravel.png" alt="JETSET TRAVELS" class="svc-img">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div>
-        </div>
-        <div class="svc-logo">
-          <img src="img/avionnn.jpeg" alt="Avion" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.style.display='none'">
-        </div>
+        <div style="position:relative;overflow:hidden"><img src="img/jetsettravel.png" alt="JETSET TRAVELS" class="svc-img"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.3))"></div></div>
+        <div class="svc-logo"><img src="img/jetset222.jpeg" alt="Avion" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.style.display='none'"></div>
         <div style="padding:14px 20px 24px;text-align:center">
           <h3 style="font-size:15px;font-weight:700;color:#1A4A2E;margin-bottom:8px">JETSET TRAVELS</h3>
           <p style="font-size:13px;color:#1A4A2E70;line-height:1.6">Agence de voyages d'affaires et de loisirs. Organisation de déplacements professionnels et séjours personnalisés.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -691,27 +722,22 @@
       <p style="color:#1A4A2E75;font-size:14px;margin-top:12px;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto">Notre équipe vous accompagne du calibre au conditionnement, en passant par la logistique internationale.</p>
     </div>
     <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
-
       <a href="tel:+221775236473" class="contact-card">
         <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
         <div style="min-width:0"><div class="label">Téléphone 1</div><div class="value">+221 77 523 64 73</div></div>
       </a>
-
-      <a href="tel:+221783781313" class="contact-card">
+      <a href="tel:+221711137272" class="contact-card">
         <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
-        <div style="min-width:0"><div class="label">Téléphone 2</div><div class="value">+221 78 378 13 13</div></div>
+        <div style="min-width:0"><div class="label">Téléphone 2</div><div class="value">+221 71 113 72 72</div></div>
       </a>
-
       <a href="mailto:bassirou.ba@sunumango.com" class="contact-card">
         <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div style="min-width:0"><div class="label">Email général</div><div class="value">bassirou.ba@sunumango.com</div></div>
       </a>
-
       <a href="mailto:sunumango@sunumango.com" class="contact-card">
         <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5800A" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div style="min-width:0"><div class="label">Email commercial</div><div class="value">sunumango@sunumango.com</div></div>
       </a>
-
     </div>
   </div>
 </section>
@@ -720,16 +746,24 @@
 <footer style="background:#0D2318;padding:52px 0 36px">
   <div style="max-width:1280px;margin:0 auto;padding:0 20px">
     <div id="footer-grid" style="display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:start;margin-bottom:40px">
-      <div>
-        <div style="margin-bottom:12px">
+      
+      <!-- Logo + texte centré -->
+      <div style="text-align:center">
+        <div style="margin-bottom:12px;display:flex;justify-content:center">
           <img src="img/logo-sunumango.png" alt="SUNUMANGO" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div style="display:none;align-items:center;gap:8px">
             <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#F5800A,#C05C00);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/></svg></div>
             <span style="font-weight:800;font-size:16px;color:white">SUNU<span style="color:#F5800A">MANGO</span></span>
           </div>
         </div>
-        <p style="color:rgba(255,255,255,.3);font-size:12px;line-height:1.8">Exportateur sénégalais de mangues d'exception<br>REX : SNREX520ASX — Certifié GlobalGAP</p>
+        <!-- Texte centré -->
+        <p style="color:rgba(255,255,255,.3);font-size:12px;line-height:1.8;text-align:center">
+          Exportateur sénégalais de mangues d'exception<br>
+          REX : SNREX520ASX — Certifié GlobalGAP
+        </p>
       </div>
+
+      <!-- Nav -->
       <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
         <a href="#varietes" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Variétés</a>
         <a href="#destinations" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Destinations</a>
@@ -737,6 +771,8 @@
         <a href="#evenements" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Événements</a>
         <a href="#contact" style="color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;cursor:none;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Contact</a>
       </div>
+
+      <!-- Réseaux sociaux -->
       <div class="social-footer-col" style="text-align:right">
         <p style="color:rgba(255,255,255,.4);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">Retrouvez-nous sur</p>
         <div class="social-row" style="display:flex;gap:10px;justify-content:flex-end">
@@ -758,7 +794,7 @@ const cur=document.getElementById('cur'),ring=document.getElementById('curRing')
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-8)+'px';cur.style.top=(my-8)+'px'});
 (function loop(){rx+=(mx-rx-18)*.12;ry+=(my-ry-18)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.vcard,.dcard,.svc-card,.cert,.tcard').forEach(el=>{
+document.querySelectorAll('a,button,.vcard,.dcard,.svc-card,.cert,.tcard,.contact-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.classList.add('cur-big');ring.classList.add('ring-sm')});
   el.addEventListener('mouseleave',()=>{cur.classList.remove('cur-big');ring.classList.remove('ring-sm')});
 });
@@ -813,6 +849,12 @@ function fixFooter(){
   const fg=document.getElementById('footer-grid');
   if(!fg)return;
   fg.style.gridTemplateColumns=window.innerWidth<768?'1fr':'1fr auto 1fr';
+  // Sur mobile, on centre tout
+  if(window.innerWidth<768){
+    fg.style.textAlign='center';
+    document.querySelectorAll('.social-footer-col').forEach(el=>{el.style.textAlign='center'});
+    document.querySelectorAll('.social-row').forEach(el=>{el.style.justifyContent='center'});
+  }
 }
 fixFooter();window.addEventListener('resize',fixFooter);
 </script>
